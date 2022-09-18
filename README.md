@@ -18,6 +18,12 @@ $ git clone https://github.com/ktaroabobon/japan-ifc-building-confirmation.git
 $ make up
 ```
 
+## 3. Health Check
+
+```bash
+$ make healthcheck
+```
+
 ## 3. Run
 
 ```bash

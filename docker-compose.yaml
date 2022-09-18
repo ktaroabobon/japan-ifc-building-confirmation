@@ -8,10 +8,10 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./:/code
-      - ${PIP_CACHE_DIR_DEV:-cache-dev}:/root/.cache
+      - ${PIP_CACHE_DIR_APP:-cache-app}:/root/.cache
     ports:
       - "8000:8000"
     tty: true
 
 volumes:
-  cache-dev:
+  cache-app:

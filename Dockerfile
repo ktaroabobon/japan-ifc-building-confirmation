@@ -1,17 +1,9 @@
-FROM python:3.9
+FROM duffn/python-poetry:3.10-slim-1.2.0
 
 ENV APP_PATH=/code \
     PYTHONPATH=.
 
 WORKDIR $APP_PATH
-
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    pip install poetry
-
-RUN pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir poetry &&  \
-    rm -rf ~/.cache/pip
 
 COPY . .
 
