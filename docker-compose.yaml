@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  dev:
-    container_name: dev
+  app:
+    container_name: app
     build:
       context: .
       dockerfile: ./Dockerfile

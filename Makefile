@@ -21,9 +21,21 @@ up-d:
 down:
 	$(DOCKER_COMPOSE_IMPL) down
 
+.PHONY: poetry/install
+poetry/install:
+	$(DOCKER_COMPOSE_IMPL) exec app poetry install
+
+.PHONY: poetry/update:
+poetry/update:
+	$(DOCKER_COMPOSE_IMPL) exec app poetry update
+
+.PHONY: poetry/add
+poetry/add:
+	$(DOCKER_COMPOSE_IMPL) exec app poetry add $(package)
+
 .PHONY: run
 run:
-	$(DOCKER_COMPOSE_IMPL) exec dev poetry run python main.py
+	$(DOCKER_COMPOSE_IMPL) exec app poetry run python main.py
 
 .PHONY: logs
 logs:
