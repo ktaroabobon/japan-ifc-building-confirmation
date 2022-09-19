@@ -5,13 +5,26 @@ services:
     container_name: app
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./app/Dockerfile
     volumes:
-      - ./:/code
+      - ./app:/code
       - ${PIP_CACHE_DIR_APP:-cache-app}:/root/.cache
     ports:
       - "8000:8000"
     tty: true
 
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    volumes:
+      - ./api:/code
+      - ${PIP_CACHE_DIR_API:-cache-api}:/root/.cache
+    ports:
+      - "8888:8888"
+    tty: true
+
 volumes:
   cache-app:
+  cache-api:

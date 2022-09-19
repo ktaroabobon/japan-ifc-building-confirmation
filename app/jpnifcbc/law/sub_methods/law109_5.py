@@ -3,7 +3,7 @@
 https://elaws.e-gov.go.jp/document?lawid=325CO0000000338#Mp-At_109_5-Pr_1
 """
 
-from jpnifcbc.law.base_confirmation import BaseConfirmation
+from app.jpnifcbc.law.base_confirmation import BaseConfirmation
 
 
 class Confirmation(BaseConfirmation):

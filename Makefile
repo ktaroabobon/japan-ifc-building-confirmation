@@ -1,4 +1,3 @@
-
 DOCKER_COMPOSE_VERSION_CHECKER := $(shell docker compose > /dev/null 2>&1 ; echo $$?)
 ifeq ($(DOCKER_COMPOSE_VERSION_CHECKER), 0)
 	DOCKER_COMPOSE_IMPL=docker compose
@@ -22,25 +21,37 @@ up-d:
 down:
 	$(DOCKER_COMPOSE_IMPL) down
 
-.PHONY: poetry/install
-poetry/install:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry install
+.PHONY: app/poetry/install
+app/poetry/install:
+	$(MAKE) -C app poetry/install
 
-.PHONY: poetry/update
-poetry/update:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry update
+.PHONY: app/poetry/update
+app/poetry/update:
+	$(MAKE) -C app poetry/updates
 
-.PHONY: poetry/add
-poetry/add:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry add $(package)
+.PHONY: app/poetry/add
+app/poetry/add:
+	$(MAKE) -C app poetry/add package=$(package)
 
-.PHONY: healthcheck
-healthcheck:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry run python health.py
+.PHONY: api/poetry/install
+api/poetry/install:
+	$(MAKE) -C api poetry/install
 
-.PHONY: run
-run:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry run python main.py
+.PHONY: api/poetry/update
+api/poetry/update:
+	$(MAKE) -C api poetry/updates
+
+.PHONY: api/poetry/add
+api/poetry/add:
+	$(MAKE) -C api poetry/add package=$(package)
+
+.PHONY: app/healthcheck
+app/healthcheck:
+	$(MAKE) -C app healthcheck
+
+.PHONY: app/run
+app/run:
+	$(MAKE) -C app run
 
 .PHONY: logs
 logs:

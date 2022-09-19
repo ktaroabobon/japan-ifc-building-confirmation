@@ -2,11 +2,11 @@
 建築基準法第21条第1号（大規模建築の主要構造部）
 https://elaws.e-gov.go.jp/document?lawid=325AC0000000201#Mp-At_21-Pr_1
 """
-from jpnifcbc.law.base_confirmation import BaseConfirmation
-from jpnifcbc.law.sub_methods.law109_4 import Confirmation as Law109_4
-from jpnifcbc.law.sub_methods.law109_5 import Confirmation as Law109_5
+from app.jpnifcbc.law.base_confirmation import BaseConfirmation
+from app.jpnifcbc.law.sub_methods.law109_4 import Confirmation as Law109_4
+from app.jpnifcbc.law.sub_methods.law109_5 import Confirmation as Law109_5
 
-from jpnifcbc.wrapper.element import Quantity
+from app.jpnifcbc.wrapper.element import Quantity
 
 
 class Confirmation(BaseConfirmation):

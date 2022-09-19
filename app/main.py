@@ -4,13 +4,13 @@ from pathlib import Path
 
 import ifcopenshell
 
-from jpnifcbc.law.standard_methods.law21_1 import Confirmation as Law21_1
+from app.jpnifcbc.law.standard_methods.law21_1 import Confirmation as Law21_1
 
 # sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
-base_dir = Path().resolve()
+base_dir = Path().parent.resolve()
 data_dir = base_dir / "data"
 
 SAMPLE_DATA_PATH = data_dir / 'test.ifc'

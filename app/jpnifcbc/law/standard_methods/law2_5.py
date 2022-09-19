@@ -1,28 +1,25 @@
 """
-建築基準法施行令第109条第4項
-https://elaws.e-gov.go.jp/document?lawid=325CO0000000338#Mp-At_109_4-Pr_1
+建築基準法第2条第5号（主要構造部）
+https://elaws.e-gov.go.jp/document?lawid=325AC0000000201#Mp-At_2-Pr_1-It_5
 """
-from jpnifcbc.law.base_confirmation import BaseConfirmation
-from jpnifcbc.law.standard_methods.law2_5 import Confirmation as Law2_5
+from app.jpnifcbc.law.base_confirmation import BaseConfirmation
 
 
 class Confirmation(BaseConfirmation):
     """
-    施行令第109条第4項
-
-    基準法第21条第1項の政令で定められている部分の技術的基準について
+    基準法第2条第5号（主要構造部）の判定
     """
 
     def __init__(self, ifc_file):
         super().__init__(ifc_file)
 
     @classmethod
-    def main(cls, ifc_file):
+    def main(cls, ifc_file) -> list:
         """
-        実行関数
+        適合判定実行関数
 
         Returns:
-
+            bool: 判定結果
         """
         target = cls(ifc_file=ifc_file)
         target.condition()
@@ -37,7 +34,9 @@ class Confirmation(BaseConfirmation):
         Returns:
 
         """
-        self.target_elements, _ = Law2_5.main(self.ifc_file)
+        target_elements = ["IfcWall", "IfcColumn", "IfcSlab", "IfcBeam", "IfcRoof", "IfcStair"]
+
+        self.target_elements = self.filter_elements(target_elements)[0]
 
     def verification(self):
         """
