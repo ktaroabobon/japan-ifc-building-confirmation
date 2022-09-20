@@ -9,7 +9,7 @@ license = "MIT"
 python = "^3.10"
 fastapi = "^0.85.0"
 uvicorn = "^0.18.3"
-jpnifcbc = { git = "ssh://git@github.com/ktaroabobon/japan-ifc-building-confirmation.git", rev = "main", subdirectory = "app" }
+jpnifcbc = { git = "https://github.com/ktaroabobon/japan-ifc-building-confirmation.git", rev = "main", subdirectory = "app" }
 
 [tool.poetry.dev-dependencies]
 

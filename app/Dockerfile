@@ -1,4 +1,4 @@
-FROM duffn/python-poetry:3.10.2-slim-1.2.1
+FROM duffn/python-poetry:3.10-slim-1.2.0
 
 ENV APP_PATH=/code \
     PYTHONPATH=.
