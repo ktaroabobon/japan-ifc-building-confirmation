@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "japan-ifc-building-confirmation"
+name = "jpnifcbc"
 version = "0.1.0"
 description = ""
 authors = ["ktaroabobon <ktaroabobon@gmail.com>"]

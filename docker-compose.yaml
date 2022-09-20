@@ -18,6 +18,8 @@ services:
     build:
       context: .
       dockerfile: ./api/Dockerfile
+      args:
+        DEPLOY_KEY: ${DEPLOY_KEY}
     volumes:
       - ./api:/code
       - ${PIP_CACHE_DIR_API:-cache-api}:/root/.cache

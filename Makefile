@@ -9,6 +9,10 @@ endif
 help:
 	cat ./Makefile
 
+.PHONY: build
+build:
+	$(DOCKER_COMPOSE_IMPL) build
+
 .PHONY: up
 up:
 	$(DOCKER_COMPOSE_IMPL) up
@@ -39,7 +43,7 @@ api/poetry/install:
 
 .PHONY: api/poetry/update
 api/poetry/update:
-	$(MAKE) -C api poetry/updates
+	$(MAKE) -C api poetry/update
 
 .PHONY: api/poetry/add
 api/poetry/add:
