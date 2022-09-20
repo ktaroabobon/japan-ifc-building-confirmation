@@ -5,7 +5,7 @@ ENV APP_PATH=/code \
 
 WORKDIR $APP_PATH
 
-COPY . .
+COPY ./app .
 
 RUN poetry install
 

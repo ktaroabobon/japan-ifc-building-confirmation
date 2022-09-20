@@ -11,12 +11,26 @@ help:
 
 .PHONY: poetry/install
 poetry/install:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry install
+	$(DOCKER_COMPOSE_IMPL) exec api poetry install
 
 .PHONY: poetry/update
 poetry/update:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry update
+	$(DOCKER_COMPOSE_IMPL) exec api poetry update
 
-.PHONY: app/poetry/add
-app/poetry/add:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry add $(package)
+.PHONY: poetry/add
+poetry/add:
+	$(DOCKER_COMPOSE_IMPL) exec api poetry add $(package)
+
+.PHONY: run
+run:
+	$(DOCKER_COMPOSE_IMPL) exec api poetry run uvicorn main:app --reload --host 0.0.0.0 --port 8888
+
+.PHONY: healthcheck
+healthcheck:
+	curl --request GET -sL \
+	     --url 'http://0.0.0.0:8888/health/' \
+	     --header 'Content-Type: application/json'
+
+.PHONY: docs
+docs:
+	open http://0.0.0.0:8888/docs

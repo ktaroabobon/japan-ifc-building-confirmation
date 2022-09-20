@@ -21,10 +21,6 @@ poetry/update:
 app/poetry/add:
 	$(DOCKER_COMPOSE_IMPL) exec app poetry add $(package)
 
-.PHONY: healthcheck
-healthcheck:
-	$(DOCKER_COMPOSE_IMPL) exec app poetry run python health.py
-
 .PHONY: run
 run:
 	$(DOCKER_COMPOSE_IMPL) exec app poetry run python main.py

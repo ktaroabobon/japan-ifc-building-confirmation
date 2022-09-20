@@ -45,13 +45,26 @@ api/poetry/update:
 api/poetry/add:
 	$(MAKE) -C api poetry/add package=$(package)
 
-.PHONY: app/healthcheck
-app/healthcheck:
-	$(MAKE) -C app healthcheck
-
 .PHONY: app/run
 app/run:
 	$(MAKE) -C app run
+
+.PHONY: api/run
+api/run:
+	$(MAKE) -C api run
+
+.PHONY: api/rerun
+api/rerun:
+	$(DOCKER_COMPOSE_IMPL) stop api
+	$(MAKE) -C api run
+
+.PHONY: api/healthcheck
+api/healthcheck:
+	$(MAKE) -C api healthcheck
+
+.PHONY: api/docs
+api/docs:
+	$(MAKE) -C api docs
 
 .PHONY: logs
 logs:

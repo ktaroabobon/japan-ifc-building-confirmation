@@ -1,4 +1,4 @@
-# Japan IFC Building Confimation
+# Japan IFC Building Confirmation
 
 日本の建築確認をIFCを用いて行うためのプロジェクトです。
 
