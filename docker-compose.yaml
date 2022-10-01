@@ -5,9 +5,10 @@ services:
     container_name: app
     build:
       context: .
-      dockerfile: ./app/Dockerfile
+      dockerfile: ./jpnifcbc/Dockerfile
     volumes:
-      - ./app:/code
+      - ./jpnifcbc:/code/jpnifcbc
+      - ./data:/code/data
       - ${PIP_CACHE_DIR_APP:-cache-app}:/root/.cache
     ports:
       - "8000:8000"
@@ -20,6 +21,7 @@ services:
       dockerfile: ./api/Dockerfile
     volumes:
       - ./api:/code
+      - ./jpnifcbc:/code/jpnifcbc
       - ${PIP_CACHE_DIR_API:-cache-api}:/root/.cache
     ports:
       - "8888:8888"

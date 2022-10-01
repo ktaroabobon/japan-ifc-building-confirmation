@@ -25,7 +25,8 @@ class AnalysisResult(BaseModel):
     exceptionElements: List[ResponseElement]
 
 
-class ApiResponse(BaseModel):
+class APIResponse(BaseModel):
     """Base class for all API responses."""
     result: AnalysisResult
+    message: str
     metadata: dict

@@ -7,7 +7,17 @@ endif
 
 .PHONY: help
 help:
+	@echo "HELP FOR API"
 	cat ./Makefile
+	@echo "---------------"
+
+.PHONY: docker-compose/build
+docker-compose/build:
+	$(DOCKER_COMPOSE_IMPL) build api
+
+.PHONY: docker-compose/stop
+docker-compose/stop:
+	$(DOCKER_COMPOSE_IMPL) stop api
 
 .PHONY: poetry/install
 poetry/install:
@@ -25,6 +35,12 @@ poetry/add:
 run:
 	$(DOCKER_COMPOSE_IMPL) exec api poetry run uvicorn main:app --reload --host 0.0.0.0 --port 8888
 
+.PHONY: rerun
+rerun:
+	$(DOCKER_COMPOSE_IMPL) stop api
+	$(MAKE) docker-compose/up-d
+	$(MAKE) run
+
 .PHONY: healthcheck
 healthcheck:
 	curl --request GET -sL \
@@ -34,3 +50,7 @@ healthcheck:
 .PHONY: docs
 docs:
 	open http://0.0.0.0:8888/docs
+
+.PHONY: test
+test:
+	$(DOCKER_COMPOSE_IMPL) exec api poetry run python tests/test_main.py

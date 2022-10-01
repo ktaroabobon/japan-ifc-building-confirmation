@@ -5,37 +5,69 @@ else
 	DOCKER_COMPOSE_IMPL=docker-compose
 endif
 
+
+# Make command for all
 .PHONY: help
 help:
+	@echo "HELP FOR ALL"
 	cat ./Makefile
+	@echo "---------------"
 
 .PHONY: build
 build:
+	$(MAKE) docker-compose/up-d
+	$(MAKE) -C api run
+
+.PHONY: docker-compose/build
+docker-compose/build:
 	$(DOCKER_COMPOSE_IMPL) build
 
-.PHONY: up
-up:
+.PHONY: docker-compose/up
+docker-compose/up:
 	$(DOCKER_COMPOSE_IMPL) up
 
-.PHONY: up-d
-up-d:
+.PHONY: docker-compose/up-d
+docker-compose/up-d:
 	$(DOCKER_COMPOSE_IMPL) up -d
 
-.PHONY: down
-down:
+.PHONY: docker-compose/down
+docker-compose/down:
 	$(DOCKER_COMPOSE_IMPL) down
 
-.PHONY: app/poetry/install
-app/poetry/install:
-	$(MAKE) -C app poetry/install
+.PHONY: run
+run:
+	$(MAKE) -C api run
+	$(MAKE) docs
 
-.PHONY: app/poetry/update
-app/poetry/update:
-	$(MAKE) -C app poetry/updates
+.PHONY: rerun
+rerun:
+	$(DOCKER_COMPOSE_IMPL) stop api
+	$(MAKE) docker-compose/up-d
+	$(MAKE) run
 
-.PHONY: app/poetry/add
-app/poetry/add:
-	$(MAKE) -C app poetry/add package=$(package)
+.PHONY: api/healthcheck
+api/healthcheck:
+	$(MAKE) -C api healthcheck
+
+.PHONY: app/healthcheck
+app/healthcheck:
+	$(MAKE) -C jpnifcbc healthcheck
+
+.PHONY: api/test
+api/test:
+	$(MAKE) -C api test
+
+.PHONY: docs
+docs:
+	$(MAKE) -C api docs
+
+.PHONY: logs
+logs:
+	$(DOCKER_COMPOSE_IMPL) logs -f
+
+.PHONY: docker-compose/logs
+docker-compose/logs:
+	$(DOCKER_COMPOSE_IMPL) logs -f
 
 .PHONY: api/poetry/install
 api/poetry/install:
@@ -49,27 +81,14 @@ api/poetry/update:
 api/poetry/add:
 	$(MAKE) -C api poetry/add package=$(package)
 
-.PHONY: app/run
-app/run:
-	$(MAKE) -C app run
+.PHONY: app/poetry/install
+app/poetry/install:
+	$(MAKE) -C app poetry/install
 
-.PHONY: api/run
-api/run:
-	$(MAKE) -C api run
+.PHONY: app/poetry/update
+app/poetry/update:
+	$(MAKE) -C app poetry/update
 
-.PHONY: api/rerun
-api/rerun:
-	$(DOCKER_COMPOSE_IMPL) stop api
-	$(MAKE) -C api run
-
-.PHONY: api/healthcheck
-api/healthcheck:
-	$(MAKE) -C api healthcheck
-
-.PHONY: api/docs
-api/docs:
-	$(MAKE) -C api docs
-
-.PHONY: logs
-logs:
-	$(DOCKER_COMPOSE_IMPL) logs -f
+.PHONY: app/poetry/add
+app/poetry/add:
+	$(MAKE) -C app poetry/add package=$(package)

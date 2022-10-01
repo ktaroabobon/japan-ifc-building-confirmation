@@ -15,7 +15,7 @@ $ git clone https://github.com/ktaroabobon/japan-ifc-building-confirmation.git
 ## 2. Build Environment
 
 ```bash
-$ make up
+$ make build
 ```
 
 ## 3. Health Check
