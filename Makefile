@@ -83,12 +83,12 @@ api/poetry/add:
 
 .PHONY: app/poetry/install
 app/poetry/install:
-	$(MAKE) -C app poetry/install
+	$(MAKE) -C jpnifcbc poetry/install
 
 .PHONY: app/poetry/update
 app/poetry/update:
-	$(MAKE) -C app poetry/update
+	$(MAKE) -C jpnifcbc poetry/update
 
 .PHONY: app/poetry/add
 app/poetry/add:
-	$(MAKE) -C app poetry/add package=$(package)
+	$(MAKE) -C jpnifcbc poetry/add package=$(package)
