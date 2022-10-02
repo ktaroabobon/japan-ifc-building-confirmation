@@ -4,7 +4,7 @@ import shutil
 import traceback
 from logging import getLogger
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 import ifcopenshell
 
 from jpnifcbc.law.standard_methods.law21_1 import Confirmation as Law21_1
@@ -37,6 +37,7 @@ def law_21_1(body: APIRequest):
     message = "Failed"
     result = None
     metadata = None
+    status_code = 500
     try:
         request = body.dict()
         ifc = request["ifc"]
@@ -69,6 +70,7 @@ def law_21_1(body: APIRequest):
             exceptionElements=IfcOpenShellObj.get_obj_info(exception_elements)
         )
         message = "Success"
+        status_code = 200
         logger.debug("Success Law 21_1")
 
     except Exception as e:
@@ -85,4 +87,4 @@ def law_21_1(body: APIRequest):
     )
 
     logger.info("End Law 21_1")
-    return {"response": response.dict()}
+    return Response(content=response.json(), media_type="application/json", status_code=status_code)
