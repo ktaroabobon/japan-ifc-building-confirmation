@@ -3,7 +3,7 @@ from typing import List
 
 class IfcOpenShellObj(object):
     @classmethod
-    def get_obj_info(cls, obj_list: list):
+    def get_obj_info(cls, obj_list: list) -> List[dict]:
         """ifcopenshell形式のオブジェクトから情報を取得する関数
 
         Args:
@@ -34,7 +34,7 @@ class IfcOpenShellObj(object):
                         }
                         property_list.append(property_dict)
 
-            info_dict['propertySetNum'] = len(property_list)
+            info_dict['propertySetNumber'] = len(property_list)
             info_dict['propertySet'] = property_list
 
             obj_info_list.append(info_dict)
