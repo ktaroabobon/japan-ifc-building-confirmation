@@ -59,7 +59,7 @@ def law_21_1(body: APIRequest):
         logger.debug('open ifc file')
 
         shutil.rmtree(tmp_dir)
-        logger.debug('remove tem dir')
+        logger.debug('remove tmp dir')
 
         conformity_elements, not_conformity_elements, exception_elements = Law21_1.main(ifc_file=ifc_file)
 
