@@ -21,7 +21,7 @@ $ make build
 ## 3. Health Check
 
 ```bash
-$ make healthcheck
+$ make api/healthcheck
 ```
 
 ## 3. Run
