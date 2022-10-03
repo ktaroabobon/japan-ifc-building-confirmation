@@ -41,4 +41,3 @@ $ make logs
 ```bash
 $ make down
 ```
-
