@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import List, Union
 
 from pydantic import BaseModel
 
@@ -6,7 +6,7 @@ from pydantic import BaseModel
 class ResponsePropertySet(BaseModel):
     """Property set of respose."""
     name: str
-    value: Any
+    value: Union[str, int, float, bool]
 
 
 class ResponseElement(BaseModel):
