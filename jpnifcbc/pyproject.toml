@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-python-ifcopenshell = "^1.0.5"
+ifcopenshell-python = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 

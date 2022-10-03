@@ -11,8 +11,8 @@ idna = ">=2.8"
 sniffio = ">=1.1"
 
 [package.extras]
-doc = ["packaging", "sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme"]
-test = ["contextlib2", "coverage[toml] (>=4.5)", "hypothesis (>=4.0)", "mock (>=4)", "pytest (>=7.0)", "pytest-mock (>=3.6.1)", "trustme", "uvloop (<0.15)", "uvloop (>=0.15)"]
+doc = ["packaging", "sphinx-rtd-theme", "sphinx-autodoc-typehints (>=1.2.0)"]
+test = ["coverage[toml] (>=4.5)", "hypothesis (>=4.0)", "pytest (>=7.0)", "pytest-mock (>=3.6.1)", "trustme", "contextlib2", "uvloop (<0.15)", "mock (>=4)", "uvloop (>=0.15)"]
 trio = ["trio (>=0.16)"]
 
 [[package]]
@@ -24,10 +24,10 @@ optional = false
 python-versions = ">=3.5"
 
 [package.extras]
-dev = ["cloudpickle", "coverage[toml] (>=5.0.2)", "furo", "hypothesis", "mypy (>=0.900,!=0.940)", "pre-commit", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "sphinx", "sphinx-notfound-page", "zope.interface"]
-docs = ["furo", "sphinx", "sphinx-notfound-page", "zope.interface"]
-tests = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy (>=0.900,!=0.940)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "zope.interface"]
-tests_no_zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy (>=0.900,!=0.940)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins"]
+dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "zope.interface", "furo", "sphinx", "sphinx-notfound-page", "pre-commit", "cloudpickle"]
+docs = ["furo", "sphinx", "zope.interface", "sphinx-notfound-page"]
+tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "zope.interface", "cloudpickle"]
+tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "cloudpickle"]
 
 [[package]]
 name = "certifi"
@@ -82,8 +82,8 @@ starlette = "0.20.4"
 [package.extras]
 all = ["email-validator (>=1.1.1,<2.0.0)", "itsdangerous (>=1.1.0,<3.0.0)", "jinja2 (>=2.11.2,<4.0.0)", "orjson (>=3.2.1,<4.0.0)", "python-multipart (>=0.0.5,<0.0.6)", "pyyaml (>=5.3.1,<7.0.0)", "requests (>=2.24.0,<3.0.0)", "ujson (>=4.0.1,!=4.0.2,!=4.1.0,!=4.2.0,!=4.3.0,!=5.0.0,!=5.1.0,<6.0.0)", "uvicorn[standard] (>=0.12.0,<0.19.0)"]
 dev = ["autoflake (>=1.4.0,<2.0.0)", "flake8 (>=3.8.3,<6.0.0)", "pre-commit (>=2.17.0,<3.0.0)", "uvicorn[standard] (>=0.12.0,<0.19.0)"]
-doc = ["mdx-include (>=1.4.1,<2.0.0)", "mkdocs (>=1.1.2,<2.0.0)", "mkdocs-markdownextradata-plugin (>=0.1.7,<0.3.0)", "mkdocs-material (>=8.1.4,<9.0.0)", "pyyaml (>=5.3.1,<7.0.0)", "typer (>=0.4.1,<0.7.0)"]
-test = ["anyio[trio] (>=3.2.1,<4.0.0)", "black (==22.8.0)", "databases[sqlite] (>=0.3.2,<0.7.0)", "email-validator (>=1.1.1,<2.0.0)", "flake8 (>=3.8.3,<6.0.0)", "flask (>=1.1.2,<3.0.0)", "httpx (>=0.23.0,<0.24.0)", "isort (>=5.0.6,<6.0.0)", "mypy (==0.971)", "orjson (>=3.2.1,<4.0.0)", "passlib[bcrypt] (>=1.7.2,<2.0.0)", "peewee (>=3.13.3,<4.0.0)", "pytest (>=7.1.3,<8.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "python-jose[cryptography] (>=3.3.0,<4.0.0)", "python-multipart (>=0.0.5,<0.0.6)", "pyyaml (>=5.3.1,<7.0.0)", "requests (>=2.24.0,<3.0.0)", "sqlalchemy (>=1.3.18,<1.5.0)", "types-orjson (==3.6.2)", "types-ujson (==5.4.0)", "ujson (>=4.0.1,!=4.0.2,!=4.1.0,!=4.2.0,!=4.3.0,!=5.0.0,!=5.1.0,<6.0.0)"]
+doc = ["mdx-include (>=1.4.1,<2.0.0)", "mkdocs-markdownextradata-plugin (>=0.1.7,<0.3.0)", "mkdocs-material (>=8.1.4,<9.0.0)", "mkdocs (>=1.1.2,<2.0.0)", "pyyaml (>=5.3.1,<7.0.0)", "typer (>=0.4.1,<0.7.0)"]
+test = ["anyio[trio] (>=3.2.1,<4.0.0)", "black (==22.8.0)", "databases[sqlite] (>=0.3.2,<0.7.0)", "email-validator (>=1.1.1,<2.0.0)", "flake8 (>=3.8.3,<6.0.0)", "flask (>=1.1.2,<3.0.0)", "httpx (>=0.23.0,<0.24.0)", "isort (>=5.0.6,<6.0.0)", "mypy (==0.971)", "orjson (>=3.2.1,<4.0.0)", "passlib[bcrypt] (>=1.7.2,<2.0.0)", "peewee (>=3.13.3,<4.0.0)", "pytest-cov (>=2.12.0,<4.0.0)", "pytest (>=7.1.3,<8.0.0)", "python-jose[cryptography] (>=3.3.0,<4.0.0)", "python-multipart (>=0.0.5,<0.0.6)", "pyyaml (>=5.3.1,<7.0.0)", "requests (>=2.24.0,<3.0.0)", "sqlalchemy (>=1.3.18,<1.5.0)", "types-orjson (==3.6.2)", "types-ujson (==5.4.0)", "ujson (>=4.0.1,!=4.0.2,!=4.1.0,!=4.2.0,!=4.3.0,!=5.0.0,!=5.1.0,<6.0.0)"]
 
 [[package]]
 name = "h11"
@@ -100,6 +100,14 @@ description = "Internationalized Domain Names in Applications (IDNA)"
 category = "main"
 optional = false
 python-versions = ">=3.5"
+
+[[package]]
+name = "ifcopenshell-python"
+version = "0.7.0"
+description = "Python bindings, utility functions, and high-level API for IfcOpenShell"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "iniconfig"
@@ -129,8 +137,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-dev = ["pre-commit", "tox"]
-testing = ["pytest", "pytest-benchmark"]
+testing = ["pytest-benchmark", "pytest"]
+dev = ["tox", "pre-commit"]
 
 [[package]]
 name = "py"
@@ -164,7 +172,7 @@ optional = false
 python-versions = ">=3.6.8"
 
 [package.extras]
-diagrams = ["jinja2", "railroad-diagrams"]
+diagrams = ["railroad-diagrams", "jinja2"]
 
 [[package]]
 name = "pytest"
@@ -185,14 +193,6 @@ tomli = ">=1.0.0"
 
 [package.extras]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
-
-[[package]]
-name = "python-ifcopenshell"
-version = "1.0.5"
-description = "installable package for ifcopenshell"
-category = "main"
-optional = false
-python-versions = ">=3.9"
 
 [[package]]
 name = "requests"
@@ -259,8 +259,8 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, <4"
 
 [package.extras]
-brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)", "brotlipy (>=0.6.0)"]
-secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "ipaddress", "pyOpenSSL (>=0.14)", "urllib3-secure-extra"]
+brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "urllib3-secure-extra", "ipaddress"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
@@ -281,7 +281,7 @@ standard = ["colorama (>=0.4)", "httptools (>=0.4.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "28e4a06a8597c33f19b70a1968ab22c6d3063dae3d2a5de1b9ed63f0c32ae3e0"
+content-hash = "b5d1e9b507c7980eebee38eff90aa1d7fa25bb1814c34f2b9d7990958cf50c2d"
 
 [metadata.files]
 anyio = [
@@ -319,6 +319,309 @@ h11 = [
 idna = [
     {file = "idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2"},
     {file = "idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
+]
+ifcopenshell-python = [
+    {file = "ifcopenshell_python-0.7.0-220831-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:69dafd635944410a3b1288c8057284aa7f4f0513068dc63fd44288d351df298f"},
+    {file = "ifcopenshell_python-0.7.0-220831-py310-none-manylinux1_x86_64.whl", hash = "sha256:3de32f90516bccf860268f046662da83a273752670fd9a869a5bd1ff184c2326"},
+    {file = "ifcopenshell_python-0.7.0-220831-py310-none-win_amd64.whl", hash = "sha256:4e89c5afe07679ef65f78333e51702b8e38e57b87569f9927439e970eb810b8e"},
+    {file = "ifcopenshell_python-0.7.0-220831-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:07beb22984b2e71b805b3466f6302327cc26c29ea46f62d7f3abb3a8f6894014"},
+    {file = "ifcopenshell_python-0.7.0-220831-py36-none-manylinux1_x86_64.whl", hash = "sha256:f11c200573ea9691f998af82bf90df441163a749f226716aa1510bdab6752e48"},
+    {file = "ifcopenshell_python-0.7.0-220831-py36-none-win_amd64.whl", hash = "sha256:65c96dc4dc5f09bcc6e33e91ff877b6e73a71b673fb3b9e8e5ddb68ff77a7bc8"},
+    {file = "ifcopenshell_python-0.7.0-220831-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:533bbe8ccc8419df4b59166d4a5b40a3283110aae15b97e8509ace5dc0513717"},
+    {file = "ifcopenshell_python-0.7.0-220831-py37-none-manylinux1_x86_64.whl", hash = "sha256:97f2e48df9b902274815578e328dd416388c585710cc26251a1f95bac7ee304c"},
+    {file = "ifcopenshell_python-0.7.0-220831-py37-none-win_amd64.whl", hash = "sha256:34a15577e3724b0d762c0a84378aed9620524a299514f0fa0b6c3887f8dd5782"},
+    {file = "ifcopenshell_python-0.7.0-220831-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:a8c689d0f465a800f5a3b438cd85ebe4d3d8474f2ca598f3998dd85aac2c581f"},
+    {file = "ifcopenshell_python-0.7.0-220831-py38-none-manylinux1_x86_64.whl", hash = "sha256:a7e0add8806d07e9407af82fc83a6d33ae302ba24cd2bd580e1fbb21f1d29cc1"},
+    {file = "ifcopenshell_python-0.7.0-220831-py38-none-win_amd64.whl", hash = "sha256:689bbf9bbee364d89b9f0eb0a13a8d51dc28fb85009ffe52f6a6d6338bb387ad"},
+    {file = "ifcopenshell_python-0.7.0-220831-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:b4032d6c51d0a752f2e1613cda2fcf909085db90552ac65bd8ad4438604d1888"},
+    {file = "ifcopenshell_python-0.7.0-220831-py39-none-manylinux1_x86_64.whl", hash = "sha256:9ac6eeae6d67acdfd51202bed4b5273c72fd52bd9e2dd93bc05c02429cad3862"},
+    {file = "ifcopenshell_python-0.7.0-220831-py39-none-win_amd64.whl", hash = "sha256:9793c303ee3a0b3a6962b888af087071089a6d181f2b0b0bbc07c8fe30969e21"},
+    {file = "ifcopenshell_python-0.7.0-220901-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:af8baf5b404b280db01461e367793613b6f2bb71ff9fc627322e7ac786b01a2f"},
+    {file = "ifcopenshell_python-0.7.0-220901-py310-none-manylinux1_x86_64.whl", hash = "sha256:ae9d3e8f6d3a3a801eaeecf9385b5aa05ae1314bf17648eb04bc3b02770a5c87"},
+    {file = "ifcopenshell_python-0.7.0-220901-py310-none-win_amd64.whl", hash = "sha256:90bf29949702c2cbdc4c631cb10d97817cfb998cf9eadc99fd2aabefcaa04748"},
+    {file = "ifcopenshell_python-0.7.0-220901-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:30d078914bfb61c92fe74d7f5d76e521d1593f74818232eb4b1222b9a31df726"},
+    {file = "ifcopenshell_python-0.7.0-220901-py36-none-manylinux1_x86_64.whl", hash = "sha256:c42e4a47e91de66083b912b8d6f1cf33b832e3ca346df6e641f2066989d74980"},
+    {file = "ifcopenshell_python-0.7.0-220901-py36-none-win_amd64.whl", hash = "sha256:bf22d86b0e4edf97715ee84c4b64472b9f0e5df0db2e1b57fa6c8ab2162a2d7b"},
+    {file = "ifcopenshell_python-0.7.0-220901-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:fdcd26bcc8cf9ac79766f998b911379170ac73b7fe6735ae16dcb1a2d4bac9f4"},
+    {file = "ifcopenshell_python-0.7.0-220901-py37-none-manylinux1_x86_64.whl", hash = "sha256:0b677c66224da267df6291ca9cc9de1a1e473e18ea0f1f3df7ab8cc675aa9b92"},
+    {file = "ifcopenshell_python-0.7.0-220901-py37-none-win_amd64.whl", hash = "sha256:c1ad564f62ac08639d37444c8587fdee3041b2e3eb1df9468256239fcfd36e0d"},
+    {file = "ifcopenshell_python-0.7.0-220901-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:1e5fc7582c9bb2c389f25a3e09adcb7e9139adfc69871840c6b81de8e49f9d4d"},
+    {file = "ifcopenshell_python-0.7.0-220901-py38-none-manylinux1_x86_64.whl", hash = "sha256:d6d04c4a50d76d18dd9aba6eb625618a8ebbc72ae3585d21c63eca6678e824fe"},
+    {file = "ifcopenshell_python-0.7.0-220901-py38-none-win_amd64.whl", hash = "sha256:eca0b6799ddb34f44286943ab3364e9e8e0434f1622fdebb1c62a4c74fab34ba"},
+    {file = "ifcopenshell_python-0.7.0-220901-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:2631567c1911e53c19c17ea098c6bb8e3b320dca11aa52f6eb60f8f6640f3244"},
+    {file = "ifcopenshell_python-0.7.0-220901-py39-none-manylinux1_x86_64.whl", hash = "sha256:010fcb53418c54cd6dfbe90cc3ff51bc9f7a67bf4f9dd3391afcc58a5a77c60b"},
+    {file = "ifcopenshell_python-0.7.0-220901-py39-none-win_amd64.whl", hash = "sha256:35cd17ff2d455543070c3cfe294ba7ce21ec6f1b139b4b54c7215dcf7d9aa5ff"},
+    {file = "ifcopenshell_python-0.7.0-220902-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:14069844649cff1512337d6a1fa729b7102e4d07638bc6afb5c7657cf71d6635"},
+    {file = "ifcopenshell_python-0.7.0-220902-py310-none-manylinux1_x86_64.whl", hash = "sha256:c09bed5c8f749fd5d1d7aaec478a8893be4b4baf6fef33c5a9d706b15715a008"},
+    {file = "ifcopenshell_python-0.7.0-220902-py310-none-win_amd64.whl", hash = "sha256:425488d7665a45d2ee53e8e5898a67c4102fd545cc35d96ff0282fb793d8278b"},
+    {file = "ifcopenshell_python-0.7.0-220902-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:6787af3ca378e72b025e9c241582d1aeaabe80a42e2a5e9d33d99a00b8b8dd5d"},
+    {file = "ifcopenshell_python-0.7.0-220902-py36-none-manylinux1_x86_64.whl", hash = "sha256:942f44704ed434e103e31a01ea9c52870b63e778ceeb3dfda3418bd0af613456"},
+    {file = "ifcopenshell_python-0.7.0-220902-py36-none-win_amd64.whl", hash = "sha256:8ec90029a86efcb5e87793a2f181a9c59352032e424449ef8cbebbbc5b6adc1e"},
+    {file = "ifcopenshell_python-0.7.0-220902-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:11bc55d694abfa44e23e2bde54000fb4616065cdf8194933af75cd7a29e02e58"},
+    {file = "ifcopenshell_python-0.7.0-220902-py37-none-manylinux1_x86_64.whl", hash = "sha256:944e0152c9adec69ac416b635360f3815cc9f9fdc9eab7dc815c5f6a5eda3770"},
+    {file = "ifcopenshell_python-0.7.0-220902-py37-none-win_amd64.whl", hash = "sha256:1dac463122c7f96303ba45449f55015e74ddab6b3dac444039dbbc938a4edd9d"},
+    {file = "ifcopenshell_python-0.7.0-220902-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:a4cadfd3b60320fb88e64c53e4f386d81db2b93ab169003eabe1c24089bdda2f"},
+    {file = "ifcopenshell_python-0.7.0-220902-py38-none-manylinux1_x86_64.whl", hash = "sha256:207c8ce9452ac8b0c7f3f19a30981204f3b77d2e7bc51cb3c527a954842bcc62"},
+    {file = "ifcopenshell_python-0.7.0-220902-py38-none-win_amd64.whl", hash = "sha256:766a72407e3c579a87034ec2390a856c6dc678b97a7aa486272c9fbcfa7052c7"},
+    {file = "ifcopenshell_python-0.7.0-220902-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:fdc664d8efb2a8967d613367f9b4b84983d4514da0a7c3b1e0be9f7be7393b1b"},
+    {file = "ifcopenshell_python-0.7.0-220902-py39-none-manylinux1_x86_64.whl", hash = "sha256:925bc9c8ad7be32fe9135e743b6f6c386cfa002321c61072123e2465153598e0"},
+    {file = "ifcopenshell_python-0.7.0-220902-py39-none-win_amd64.whl", hash = "sha256:066b46d2bdff88c1b1a9b267e9b32dadef92321ada53b1053cbd6f296d969d4b"},
+    {file = "ifcopenshell_python-0.7.0-220903-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:91f59f63439f3cf451b9e1040729e1cfd4d67d57815d19f9d079251cc83f7d11"},
+    {file = "ifcopenshell_python-0.7.0-220903-py310-none-manylinux1_x86_64.whl", hash = "sha256:2ea5c1cf02f348218ca35f201bda58d15977b7ff68508c5486d9886faa579ad8"},
+    {file = "ifcopenshell_python-0.7.0-220903-py310-none-win_amd64.whl", hash = "sha256:d0109f2043af0e43b799e624008fb873ba0ea6198251f3456c56fbc7bda56721"},
+    {file = "ifcopenshell_python-0.7.0-220903-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:b2a01854b8d973e1bbed43b50c393d62cf32ea486e3f6bcf7656340229d06eb9"},
+    {file = "ifcopenshell_python-0.7.0-220903-py36-none-manylinux1_x86_64.whl", hash = "sha256:eaca09e540ae68cdf760e78d863abaab112f939d51aad084c9d5bd523439c03c"},
+    {file = "ifcopenshell_python-0.7.0-220903-py36-none-win_amd64.whl", hash = "sha256:72d0869f43d3cfaaf95dae7125191724d1a6bab086a597296791c4adc84db99f"},
+    {file = "ifcopenshell_python-0.7.0-220903-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:4fb2386fd2f8bcb71f8175b5969f3de5af3f39f2b3526382bbb7b0c402e8316d"},
+    {file = "ifcopenshell_python-0.7.0-220903-py37-none-manylinux1_x86_64.whl", hash = "sha256:ac0d3209ad39fefee12c79e680e9ec24c8467dc90043035722a7a154f49856be"},
+    {file = "ifcopenshell_python-0.7.0-220903-py37-none-win_amd64.whl", hash = "sha256:ee4a9eb829dbe5235180c9c16d68ca5e6050b58246576a0a8a15ba9844b60601"},
+    {file = "ifcopenshell_python-0.7.0-220903-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:db09a4ee8dfeaffcfff401bdc3f67b1fcfe5db7dcfa175d62acdde4eccf3c270"},
+    {file = "ifcopenshell_python-0.7.0-220903-py38-none-manylinux1_x86_64.whl", hash = "sha256:cddb73ec609572b44c47dbb57b2b71153ff4f0547cccb7603aa0638cb560da54"},
+    {file = "ifcopenshell_python-0.7.0-220903-py38-none-win_amd64.whl", hash = "sha256:080817405394f09252667a8ec6bf4b89e434220af6875479d533e5a8172bc1c2"},
+    {file = "ifcopenshell_python-0.7.0-220903-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:55b30bd6f8a1a1c38666bbc2442443f4d084f5055716b2f45362fb345d589c04"},
+    {file = "ifcopenshell_python-0.7.0-220903-py39-none-manylinux1_x86_64.whl", hash = "sha256:3be7e6a4314dd4f08be6a7529004563a51b53175331551998bb6c30ed4dfa9ce"},
+    {file = "ifcopenshell_python-0.7.0-220903-py39-none-win_amd64.whl", hash = "sha256:c3c48f713b2c42047f5a173b5f2f9cbf4af1da7abd48ef210fa64c0faaac8f6a"},
+    {file = "ifcopenshell_python-0.7.0-220904-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:949112899dd93fe4e28293e1327ede6403a0845c5de2e984f91e2ec37b75069b"},
+    {file = "ifcopenshell_python-0.7.0-220904-py310-none-manylinux1_x86_64.whl", hash = "sha256:b3c83edb069f77aad283965409fbebdd4fb90b84b1af1834058dfefad25abbcc"},
+    {file = "ifcopenshell_python-0.7.0-220904-py310-none-win_amd64.whl", hash = "sha256:ad4390085005a48d0d3eb40303a4a0806bb64316e479f8ab0330e2249e5e1f13"},
+    {file = "ifcopenshell_python-0.7.0-220904-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:efd09425f2df06131cf724d9cf93ac6abdbf7f97dd39bf8fa1070cf40bc11ca0"},
+    {file = "ifcopenshell_python-0.7.0-220904-py36-none-manylinux1_x86_64.whl", hash = "sha256:0bfc3bfc937f231a2b4bf33ea55464935eb185e089c06dd7b8ac31f4683f7d8a"},
+    {file = "ifcopenshell_python-0.7.0-220904-py36-none-win_amd64.whl", hash = "sha256:903bdd740771245f3effbb11d50b05d211270201df872f53bbcea98d1ceff922"},
+    {file = "ifcopenshell_python-0.7.0-220904-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:eb8a644a945781d3e50d48401d5bc0459bb844ba721cb9d098b8a8957d8c9b24"},
+    {file = "ifcopenshell_python-0.7.0-220904-py37-none-manylinux1_x86_64.whl", hash = "sha256:429868ecac0c742267aff0d59570ff4ff4d502a5f3eb7c13b3224ec202dec763"},
+    {file = "ifcopenshell_python-0.7.0-220904-py37-none-win_amd64.whl", hash = "sha256:9a03367db95254c1039380c061bd70e305825bc0514bc3f0b39f9f5a1be3c9b9"},
+    {file = "ifcopenshell_python-0.7.0-220904-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:41e3807e2f318519638dad63a76619deac61b452d91b48c51bc90872f28d492d"},
+    {file = "ifcopenshell_python-0.7.0-220904-py38-none-manylinux1_x86_64.whl", hash = "sha256:b423585412b9d0093b85ad6e0f3926cf08c40b4dffe58ad1c79772a08009fd9a"},
+    {file = "ifcopenshell_python-0.7.0-220904-py38-none-win_amd64.whl", hash = "sha256:b948500c8fb071b1d51861aca7903fc0404ff83379d2f67b3267c4e014cfda91"},
+    {file = "ifcopenshell_python-0.7.0-220904-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:f68da27863ffebb7b082c60572dbf84469a9e81c20ab22c5731e407953f90be0"},
+    {file = "ifcopenshell_python-0.7.0-220904-py39-none-manylinux1_x86_64.whl", hash = "sha256:de1a870e0b3dc7224ebd7b189be673e535e89dcd79e7a35f5f2dd61ce4f28bf7"},
+    {file = "ifcopenshell_python-0.7.0-220904-py39-none-win_amd64.whl", hash = "sha256:92113b563608874245313b89395af846c09a879d24e77fe7da85d14d89b6254d"},
+    {file = "ifcopenshell_python-0.7.0-220905-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:541967c54ec23e828f9d90c355a4936c4df290a391ebaaa3933001f34f60390e"},
+    {file = "ifcopenshell_python-0.7.0-220905-py310-none-manylinux1_x86_64.whl", hash = "sha256:85db66d0fac443fb5949238cd70135609944175e61a92509b9a5723f1817602a"},
+    {file = "ifcopenshell_python-0.7.0-220905-py310-none-win_amd64.whl", hash = "sha256:cc05bc12ea95f1aacb670509d6cba29e7262cfee54e63dbde8ca19b851153778"},
+    {file = "ifcopenshell_python-0.7.0-220905-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:ad8e82531d0c2998b50709c125cded8bfc6ced2187350fca3fd3b951a86ec358"},
+    {file = "ifcopenshell_python-0.7.0-220905-py36-none-manylinux1_x86_64.whl", hash = "sha256:de133a92a032c00b438e2af73be6b93e767b3b9c0b008e00594543952b2d6b3b"},
+    {file = "ifcopenshell_python-0.7.0-220905-py36-none-win_amd64.whl", hash = "sha256:69e5cf734255724e35adda891a92972cdff2427a3db1e27f4c761d398c6823af"},
+    {file = "ifcopenshell_python-0.7.0-220905-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:22e4ffd7ffaeb67e633bd0376b4928ab77c16e75bbaf26ae643d07a5f570f0cb"},
+    {file = "ifcopenshell_python-0.7.0-220905-py37-none-manylinux1_x86_64.whl", hash = "sha256:0e586cf8a2d53634a96ea105505551a3789e432f87d496d3f0bdb2eeeb8d92f2"},
+    {file = "ifcopenshell_python-0.7.0-220905-py37-none-win_amd64.whl", hash = "sha256:f3a7b04c142cdbbb3dec8cd89a7f7cdc19c77fe9855b2903627128dd6a5c7737"},
+    {file = "ifcopenshell_python-0.7.0-220905-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:9333ebfdaa959e8b1830462324197dad80b8a91b81046deaf29075472be94454"},
+    {file = "ifcopenshell_python-0.7.0-220905-py38-none-manylinux1_x86_64.whl", hash = "sha256:aa464c0da6ce5b046b3bfa43dfc532c42fa22673cb3b059b72355e1e3763485c"},
+    {file = "ifcopenshell_python-0.7.0-220905-py38-none-win_amd64.whl", hash = "sha256:0afa084c5078702f7a479c5aa022a39289109b0b7a4209138f1cbec369b2b936"},
+    {file = "ifcopenshell_python-0.7.0-220905-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:53d78bc09dbf6a55d32b3acee8f1d25cae52963a188b10b38a055406f71a563d"},
+    {file = "ifcopenshell_python-0.7.0-220905-py39-none-manylinux1_x86_64.whl", hash = "sha256:b3adbb172000308b3396fd5a246a94333579949e9f6d5f19a15166e72bf8fa60"},
+    {file = "ifcopenshell_python-0.7.0-220905-py39-none-win_amd64.whl", hash = "sha256:4983e45fcb73c12f54e3120a9e178812e5c4c79f7bcae97471216e45110b2624"},
+    {file = "ifcopenshell_python-0.7.0-220908-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:b242acfc74dcf5546a2087576a22191c974ee090d4d7bc06095072c845651c18"},
+    {file = "ifcopenshell_python-0.7.0-220908-py310-none-manylinux1_x86_64.whl", hash = "sha256:56efbd374cb03b47830428bb84e387b334854734c09286051bca7a4b8797b759"},
+    {file = "ifcopenshell_python-0.7.0-220908-py310-none-win_amd64.whl", hash = "sha256:f893e3287a563449243bd6e535524a9cd1c6bada3b3630d5bc18bf42a27caee4"},
+    {file = "ifcopenshell_python-0.7.0-220908-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:1f393417a9c5ae74cd7717c92d3daa0544c3211db4b5935692cc76fbda6b87cc"},
+    {file = "ifcopenshell_python-0.7.0-220908-py36-none-manylinux1_x86_64.whl", hash = "sha256:826534027d3e372edb6969128f651f93d561783f3618c83525977a1c2ff8b585"},
+    {file = "ifcopenshell_python-0.7.0-220908-py36-none-win_amd64.whl", hash = "sha256:6f5c0b0c94a8936e28ac0bd9128d502db10a319cae705dc819bd8c948ac89498"},
+    {file = "ifcopenshell_python-0.7.0-220908-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:53066a71ad267d778c84c9e47d7cbe82c11a8963048a70dc86064bcdd5d3406b"},
+    {file = "ifcopenshell_python-0.7.0-220908-py37-none-manylinux1_x86_64.whl", hash = "sha256:9b5ce255c2d3cdf949f5315fe847eb4ab2aa0ee631078a603ca5dc655694970b"},
+    {file = "ifcopenshell_python-0.7.0-220908-py37-none-win_amd64.whl", hash = "sha256:d75b2a8f703381d5720b86e4a0dde2f5b00df16a66f46088b4e738e38a64434d"},
+    {file = "ifcopenshell_python-0.7.0-220908-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:053db329bafbd1f9c7814aabb7ea3fa90c875961d1a3be348ba09190792c5f28"},
+    {file = "ifcopenshell_python-0.7.0-220908-py38-none-manylinux1_x86_64.whl", hash = "sha256:b5d46563abefe9a0c6ffa5de737d5b511a8de5e70ab27d3e864309e8655cf227"},
+    {file = "ifcopenshell_python-0.7.0-220908-py38-none-win_amd64.whl", hash = "sha256:dcbe74d3be615fa74896336b329073f0a81070b9c683b825dd716c4acbb0ea79"},
+    {file = "ifcopenshell_python-0.7.0-220908-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:610fda817f6f0a3a90030ecf23da687fd8f4188fb45a86bb4fca02d7b40be61a"},
+    {file = "ifcopenshell_python-0.7.0-220908-py39-none-manylinux1_x86_64.whl", hash = "sha256:e6c4e7f18c632ce157837791c9cee64b9570148f0f8a745ca5a1d123cb572604"},
+    {file = "ifcopenshell_python-0.7.0-220908-py39-none-win_amd64.whl", hash = "sha256:21dfbdb78c6a193e66ed63c2aed2e324d7ce4f429443e3a083bb71d9a14df50f"},
+    {file = "ifcopenshell_python-0.7.0-220909-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:023635917250307b01160ba3d7c8a62c1bd1a009efa23c1db74c0aeb61bd9b01"},
+    {file = "ifcopenshell_python-0.7.0-220909-py310-none-manylinux1_x86_64.whl", hash = "sha256:8e8e236117f26fb1c55a16c4c8062de9d5f9ce2782d281463103b6beaddf0312"},
+    {file = "ifcopenshell_python-0.7.0-220909-py310-none-win_amd64.whl", hash = "sha256:5d9fd620c0df1e59ceb38ac67852c441c13dee4284e2b16a26ac2fe4e6936b97"},
+    {file = "ifcopenshell_python-0.7.0-220909-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:dada14b0458fae3f13e8f925dc23dd678124f37798ea016f9504737074832a39"},
+    {file = "ifcopenshell_python-0.7.0-220909-py36-none-manylinux1_x86_64.whl", hash = "sha256:76f3c25fa50b4c1df707efd92c47833bac8661583e066bb2e39471fc2e803f8c"},
+    {file = "ifcopenshell_python-0.7.0-220909-py36-none-win_amd64.whl", hash = "sha256:4aac73de1c381dc8caba2c7e34372dea01901cab8c5257be7ed4aedf74625fd5"},
+    {file = "ifcopenshell_python-0.7.0-220909-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:483f78c0e897de5d6e6b9cf13b07c0252706a24858587de69bfb4b05d42a6f04"},
+    {file = "ifcopenshell_python-0.7.0-220909-py37-none-manylinux1_x86_64.whl", hash = "sha256:c9c82efe2bdc1cfbac6de74080522ea87f96cdf17c8eb995aaf3f12aab5e5494"},
+    {file = "ifcopenshell_python-0.7.0-220909-py37-none-win_amd64.whl", hash = "sha256:544e607e26d04ed3b8f71fc16d89b13b08c46f28ce8525113f6cd806c744a3bd"},
+    {file = "ifcopenshell_python-0.7.0-220909-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:a03fc3d5869340d578ca24658d32ca19cae15c52e6dfd1d629a0ddb3172079c2"},
+    {file = "ifcopenshell_python-0.7.0-220909-py38-none-manylinux1_x86_64.whl", hash = "sha256:c709913b56729336e449015308aa6739dc2418524c790b0246dfea44a40d1ebe"},
+    {file = "ifcopenshell_python-0.7.0-220909-py38-none-win_amd64.whl", hash = "sha256:70bf56bd8f01dc1529675b9bd5bcd10a326922326cb85155531ad4e41784b660"},
+    {file = "ifcopenshell_python-0.7.0-220909-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:139b2ca18ba90c0c9613d6b2894751af20bc7d55b473aea50373c12e99c93a44"},
+    {file = "ifcopenshell_python-0.7.0-220909-py39-none-manylinux1_x86_64.whl", hash = "sha256:684bb76c4fd6c19b401bf1fc4c6c50370a0dfa1510153a7d37225f289589ed8e"},
+    {file = "ifcopenshell_python-0.7.0-220909-py39-none-win_amd64.whl", hash = "sha256:17038fcc65cb1b224b565403ddaaf0d1b08262ea13d55725219be952e372a23c"},
+    {file = "ifcopenshell_python-0.7.0-220912-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:253699b56b67e41dce4a067ef2d663aa148aff730d0d8f2e4e42908afa96d09f"},
+    {file = "ifcopenshell_python-0.7.0-220912-py310-none-manylinux1_x86_64.whl", hash = "sha256:3ce44b5636570dae09b0251a19098c0b80ed72e5b5b7764c0a21c583ede0f76c"},
+    {file = "ifcopenshell_python-0.7.0-220912-py310-none-win_amd64.whl", hash = "sha256:6b5809dabcfa84739958f30ab06d7731aeb11d33010a670419e441270c8f4e85"},
+    {file = "ifcopenshell_python-0.7.0-220912-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:13442959261093eeeca0e660abd7decce7d6330e8623ddcfd3d5982a7b23c41d"},
+    {file = "ifcopenshell_python-0.7.0-220912-py36-none-manylinux1_x86_64.whl", hash = "sha256:62c271195055598ef018e1f521eb86990326336025d428ac7a97a6ec4ff2bba2"},
+    {file = "ifcopenshell_python-0.7.0-220912-py36-none-win_amd64.whl", hash = "sha256:5bdc95d4c641314471ed02263af1a96b63c8d2195dc5edd88a49a3a730dbb1bc"},
+    {file = "ifcopenshell_python-0.7.0-220912-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:dfa489683c3ff7f0b6d330806c7a164922b3921d63e9cbf303a648cdde2b4228"},
+    {file = "ifcopenshell_python-0.7.0-220912-py37-none-manylinux1_x86_64.whl", hash = "sha256:a03e359d9b518f17da599022331fbdbecc2b03707ee8b419a3d3827694fefe57"},
+    {file = "ifcopenshell_python-0.7.0-220912-py37-none-win_amd64.whl", hash = "sha256:d13ed23fbf5a46a9591b4c9ac3d3b451626df1c12926ebbd7b1309e95964e431"},
+    {file = "ifcopenshell_python-0.7.0-220912-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:70ec7245c2aef68eea2cd4f3c9c2bb4c656980fd674c7cb95c35df7ea3d7f760"},
+    {file = "ifcopenshell_python-0.7.0-220912-py38-none-manylinux1_x86_64.whl", hash = "sha256:1e44c80defacecce0e14534316d48037c89b00eb5cf68ba485f4cb66722cb40c"},
+    {file = "ifcopenshell_python-0.7.0-220912-py38-none-win_amd64.whl", hash = "sha256:e8e0eeb7ffa0612b4a5892a736d9fa21fcf2cfdf5b9c5e97b435bd75ac48343b"},
+    {file = "ifcopenshell_python-0.7.0-220912-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:b05d02333b783b954e4fc8f4ee9e36fe3eaf022c8c2193b9b15773a5580e7c74"},
+    {file = "ifcopenshell_python-0.7.0-220912-py39-none-manylinux1_x86_64.whl", hash = "sha256:80907b36c67f8086c1fa8db26d7afb1a8df7eb9e17c5c692e313b04b93b3ad71"},
+    {file = "ifcopenshell_python-0.7.0-220912-py39-none-win_amd64.whl", hash = "sha256:8fc769802af978a06a0cc2b07f08da27183413a43032548fd61dacd9434c6974"},
+    {file = "ifcopenshell_python-0.7.0-220915-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:239621f2344c31cc318d34fa1f9ceea28769aa13a0a2cc7b972819e1ddc5d4c2"},
+    {file = "ifcopenshell_python-0.7.0-220915-py310-none-manylinux1_x86_64.whl", hash = "sha256:95b76117a2de7f7145f8a02b09bc6e0c8100a3baf1468cdca4df35488722164c"},
+    {file = "ifcopenshell_python-0.7.0-220915-py310-none-win_amd64.whl", hash = "sha256:85d9713b10af5a56703ddcf87d7866a945939df2c427a9e4d31f0ff05971c058"},
+    {file = "ifcopenshell_python-0.7.0-220915-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:78e7f5fdf2c65d45ae6786c1ff107b96369fdad5b548d3c84c7e8a26b6d6a739"},
+    {file = "ifcopenshell_python-0.7.0-220915-py36-none-manylinux1_x86_64.whl", hash = "sha256:ca679bbcf4ed15aa588238876cdfb0fb39368880f1348107b426980a01635849"},
+    {file = "ifcopenshell_python-0.7.0-220915-py36-none-win_amd64.whl", hash = "sha256:558f05f0b7764b8f144915dcea167a484739561b836bac8dc896e6ef2a2a0347"},
+    {file = "ifcopenshell_python-0.7.0-220915-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:17de1759835a498dc527fcf10c03a4099a705276846bd52b35ee21ff407e8f6e"},
+    {file = "ifcopenshell_python-0.7.0-220915-py37-none-manylinux1_x86_64.whl", hash = "sha256:b099ad11f9ea169263bf97254ae89564cc64331c6a51ed2165334a591fb5320a"},
+    {file = "ifcopenshell_python-0.7.0-220915-py37-none-win_amd64.whl", hash = "sha256:a2375c68b922d591c37b405da09a8aa32ee80ff5ce536c6270b52aeee11899f2"},
+    {file = "ifcopenshell_python-0.7.0-220915-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:1e3b9a8cc1011ca5681133bc5eb975e3a3db70bb1fb11a4c787ab9187f004556"},
+    {file = "ifcopenshell_python-0.7.0-220915-py38-none-manylinux1_x86_64.whl", hash = "sha256:32185154189a25ad8dacc0395bde99b9bcec9e12e569d92b8db32467320af55b"},
+    {file = "ifcopenshell_python-0.7.0-220915-py38-none-win_amd64.whl", hash = "sha256:7184f77a767f42804fcdeca11e9c34ed711a216357b7e67c08b9c8563c437a1e"},
+    {file = "ifcopenshell_python-0.7.0-220915-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:8b1a7bc645aa2c445f63f4eb6285f3dfe5ccf562730a9acd48968a16d8a1eb14"},
+    {file = "ifcopenshell_python-0.7.0-220915-py39-none-manylinux1_x86_64.whl", hash = "sha256:bad2d77cd44d036ae313febda35bb22d99a968bd853812d94dc44cfb1fbe3008"},
+    {file = "ifcopenshell_python-0.7.0-220915-py39-none-win_amd64.whl", hash = "sha256:53c6f0e1f5fd11adcec6abfe3db6e43321c284dc1c2fa9dc87c9132913dec8b7"},
+    {file = "ifcopenshell_python-0.7.0-220916-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:62d1bca4b8895f25dcdb1d914638720798b2bf3afe137f5a4f8c54b02e746e0a"},
+    {file = "ifcopenshell_python-0.7.0-220916-py310-none-macosx_11_0_arm64.whl", hash = "sha256:5f1cb9f358269040db2eec310edd15ee0904859930b2a077eb4876a1a26daa05"},
+    {file = "ifcopenshell_python-0.7.0-220916-py310-none-manylinux1_x86_64.whl", hash = "sha256:55de1db4b4a706ac19ef8594376a96669f84a8699aedd65295830cbb8d275595"},
+    {file = "ifcopenshell_python-0.7.0-220916-py310-none-win_amd64.whl", hash = "sha256:919e3174500072cbd1c54352ad730aa6a0524e37357e538e4175e15cbec6f5a2"},
+    {file = "ifcopenshell_python-0.7.0-220916-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:06d47a90c731dc2954918a194ce1d9719298e958d548df002563c9f50e727cdc"},
+    {file = "ifcopenshell_python-0.7.0-220916-py36-none-macosx_11_0_arm64.whl", hash = "sha256:6ba8375f2f2147692027940e043ce4e792776bbcdc83623c00be0959bdb710ae"},
+    {file = "ifcopenshell_python-0.7.0-220916-py36-none-manylinux1_x86_64.whl", hash = "sha256:8ef0d4af431553eea899d1075a151c0d30bb7ac8c2e973599a8c17a79cf5b3fd"},
+    {file = "ifcopenshell_python-0.7.0-220916-py36-none-win_amd64.whl", hash = "sha256:4572eb216e13842e187bbe4022d547c2ea7c3b2c39db726a870d13a08c9b7106"},
+    {file = "ifcopenshell_python-0.7.0-220916-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:f3d9c6d5ea4b146dbd3ada17976821a803309605993a0a3bb169ba6bcfd46192"},
+    {file = "ifcopenshell_python-0.7.0-220916-py37-none-macosx_11_0_arm64.whl", hash = "sha256:f7a2d395a4fd33ab98b5ddae873861d8171f6fe4e0131651f2af9d9b087334cd"},
+    {file = "ifcopenshell_python-0.7.0-220916-py37-none-manylinux1_x86_64.whl", hash = "sha256:7690f3e51e6fb03ada9d059fbfa20c7f3aa3fa8731593e29bfc82e5a615aae92"},
+    {file = "ifcopenshell_python-0.7.0-220916-py37-none-win_amd64.whl", hash = "sha256:195ba1874560624d9d33ca955027b1ff1efb42695a9133c2ff28a707dd46885c"},
+    {file = "ifcopenshell_python-0.7.0-220916-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:fd439ba33c0882f5543fd97be97658344eef4b76f67970be5e0f6f2d29ddc6f6"},
+    {file = "ifcopenshell_python-0.7.0-220916-py38-none-macosx_11_0_arm64.whl", hash = "sha256:207cf6647a69c31a336ec9e91023ab6b82a75108dc921f842c5ae7141e587de9"},
+    {file = "ifcopenshell_python-0.7.0-220916-py38-none-manylinux1_x86_64.whl", hash = "sha256:bbe890ebcd8149ad94f0a006c31c6bec74d20dd03690db56db61831b8b9b2006"},
+    {file = "ifcopenshell_python-0.7.0-220916-py38-none-win_amd64.whl", hash = "sha256:bc7975797144f2a5ed673dcd0ce2155706e26ff342a98a72acc768467f79be83"},
+    {file = "ifcopenshell_python-0.7.0-220916-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:45fbde1f611472db67ca30bb5ff5e2fe4a171fc4e3122ae56a518dae90d79699"},
+    {file = "ifcopenshell_python-0.7.0-220916-py39-none-macosx_11_0_arm64.whl", hash = "sha256:64becb6be89608a8574d383fa361ebe82ab27a89abad404f939bcd157bc8b93a"},
+    {file = "ifcopenshell_python-0.7.0-220916-py39-none-manylinux1_x86_64.whl", hash = "sha256:08906aa0c8fb247a105b6f02c1c9859cef9175ac54c70853bc2bffb64f0ac78f"},
+    {file = "ifcopenshell_python-0.7.0-220916-py39-none-win_amd64.whl", hash = "sha256:b1de196c6c4f4ad5db26637ec628f92bf80aad95d80726a10c72d26cdcdbbcba"},
+    {file = "ifcopenshell_python-0.7.0-220917-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:ebc9b223a3a83323df8a8f5505dd363837b90cb93bd83c62c10ef536f9deb3e7"},
+    {file = "ifcopenshell_python-0.7.0-220917-py310-none-macosx_11_0_arm64.whl", hash = "sha256:004c2720fc4a517ae9fe70e3ec91f62cdac8225630b40cfb2a3e1ff417c93083"},
+    {file = "ifcopenshell_python-0.7.0-220917-py310-none-manylinux1_x86_64.whl", hash = "sha256:7e580206ba8bf0b707569f4cff0b7e805581f2c61637364896cec656cabb7458"},
+    {file = "ifcopenshell_python-0.7.0-220917-py310-none-win_amd64.whl", hash = "sha256:da290b96b90d6641157a0763a9f0d03d7368cfe33f67c3d557f2ef7bec01364b"},
+    {file = "ifcopenshell_python-0.7.0-220917-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:811f8551d91c497cf467910d41d03c7ec6e63e0fb9333072391c80b2c04ff847"},
+    {file = "ifcopenshell_python-0.7.0-220917-py36-none-macosx_11_0_arm64.whl", hash = "sha256:bce57741c9917caa0d5f22ff0147aa80a36603104c962bb45ff114f315ee67c6"},
+    {file = "ifcopenshell_python-0.7.0-220917-py36-none-manylinux1_x86_64.whl", hash = "sha256:bba328df4e090be56327280a7398fb95ac4af77db41ee6c7daecfa47939c2e8f"},
+    {file = "ifcopenshell_python-0.7.0-220917-py36-none-win_amd64.whl", hash = "sha256:e004522f0874b06bca69e8b9a556f9899b13e5ee358f977c450fb1dbabd9c1d0"},
+    {file = "ifcopenshell_python-0.7.0-220917-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:227e0b54ee569760a6c173949fcef4c0851aba60c2f2dfbe873194b16f023a2d"},
+    {file = "ifcopenshell_python-0.7.0-220917-py37-none-macosx_11_0_arm64.whl", hash = "sha256:e1e703eb14c3d8bb68754bbc4f118954dbe68ee4dfa677caba2a111ea0038a64"},
+    {file = "ifcopenshell_python-0.7.0-220917-py37-none-manylinux1_x86_64.whl", hash = "sha256:4d0459c7e51b17e4e986cd45a5b423b65fce6509b0b8a20f23cbb92a64c10623"},
+    {file = "ifcopenshell_python-0.7.0-220917-py37-none-win_amd64.whl", hash = "sha256:f292b73c0d836c73565830fda1d214a39be5d9be9ec08d430e8a7b92009c72c3"},
+    {file = "ifcopenshell_python-0.7.0-220917-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:c7f9ab2080a0d4e172fcdd70abb1a74c30bb61e45aa2349d87e714b64d756f51"},
+    {file = "ifcopenshell_python-0.7.0-220917-py38-none-macosx_11_0_arm64.whl", hash = "sha256:38a87179cc9be348e77971d7b8a67f53bced80619740619ef14a755c1fb9fe37"},
+    {file = "ifcopenshell_python-0.7.0-220917-py38-none-manylinux1_x86_64.whl", hash = "sha256:55fff411b16bce439773005885ab5b9645593ec7050557d0440e66021b2346ae"},
+    {file = "ifcopenshell_python-0.7.0-220917-py38-none-win_amd64.whl", hash = "sha256:4f0929a8307091960d0064585e6f1d9da6351a7b0609e885875b9aeafb1f459f"},
+    {file = "ifcopenshell_python-0.7.0-220917-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:4eb4e1cef445a558adf8e3ca61b792abab190c19e8f15ca23f851c9652c46b69"},
+    {file = "ifcopenshell_python-0.7.0-220917-py39-none-macosx_11_0_arm64.whl", hash = "sha256:c21493158fa3337e4857c2a66fecd212fb4c065302e9e2bdc794bf81353d0142"},
+    {file = "ifcopenshell_python-0.7.0-220917-py39-none-manylinux1_x86_64.whl", hash = "sha256:ed7bea38a91f382bc0cdba252b2233eb4560f36cf3fd21b0092f95cb89b3c59b"},
+    {file = "ifcopenshell_python-0.7.0-220917-py39-none-win_amd64.whl", hash = "sha256:2020e0c3b0fc1bb234ec7d371ef3ae5572d7fe0cc737444864ef5ce0c76f1a29"},
+    {file = "ifcopenshell_python-0.7.0-220918-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:815b086e491e1350189f263a267684c24fc87ae7c6895c75e525e5c915decdbf"},
+    {file = "ifcopenshell_python-0.7.0-220918-py310-none-macosx_11_0_arm64.whl", hash = "sha256:d512fef4b1e12457760cfd88610ff657125002a47032fa3ccdd07b6464332691"},
+    {file = "ifcopenshell_python-0.7.0-220918-py310-none-manylinux1_x86_64.whl", hash = "sha256:6ea82a49903ea83fa41956def8412d9cf5fbf9f9b7ee7510909418eaca742917"},
+    {file = "ifcopenshell_python-0.7.0-220918-py310-none-win_amd64.whl", hash = "sha256:04d0e264fcad861123d459a2019e5f955ba51059e5f0e5a4c031e737a2bdcb18"},
+    {file = "ifcopenshell_python-0.7.0-220918-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:2b0daf2bf4612f9c670a74ece7bd9bbfd267048636adefc0376ecf02eb76126f"},
+    {file = "ifcopenshell_python-0.7.0-220918-py36-none-macosx_11_0_arm64.whl", hash = "sha256:50be756a07c7897747fd3ed19e552e94a154fb60377cbf7c0c3d67a80cc3103a"},
+    {file = "ifcopenshell_python-0.7.0-220918-py36-none-manylinux1_x86_64.whl", hash = "sha256:2cea8a72a8f458d967386b84264596b10c30e44974219a2e62ab76e68e588ee0"},
+    {file = "ifcopenshell_python-0.7.0-220918-py36-none-win_amd64.whl", hash = "sha256:a99615e6b7a5664c4fc096129af05426f25a2c252a0f65293494eee634367f3b"},
+    {file = "ifcopenshell_python-0.7.0-220918-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:f4533f595e3715114e58a82661d1ba828063a236b489084c482ec29778469338"},
+    {file = "ifcopenshell_python-0.7.0-220918-py37-none-macosx_11_0_arm64.whl", hash = "sha256:5a3bb778f230af2a7cb83577f4386ccbde423007ae230ac6de29e5d2a78391e3"},
+    {file = "ifcopenshell_python-0.7.0-220918-py37-none-manylinux1_x86_64.whl", hash = "sha256:f4d9a5e7f79b1fe8300b74b78080493a6ec20ab43222df203c1221f61e11bdb5"},
+    {file = "ifcopenshell_python-0.7.0-220918-py37-none-win_amd64.whl", hash = "sha256:34f06f378848ef7d37b142efd93a151f949386ffea482c2a0b2d7a94dcea0d7f"},
+    {file = "ifcopenshell_python-0.7.0-220918-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:7982e5ce7328a872a4d49b797fe0f49c70d32ed53abaed013ba23546dbacc399"},
+    {file = "ifcopenshell_python-0.7.0-220918-py38-none-macosx_11_0_arm64.whl", hash = "sha256:f08672c1f15ebc8ae89ccf36214d577c1dd5e45f8352f11a4211df9f4b95fabf"},
+    {file = "ifcopenshell_python-0.7.0-220918-py38-none-manylinux1_x86_64.whl", hash = "sha256:7a859ff73080d724881aed8db8c97bbd5d13f9d8c57f09e9e15e1ecfda4b144e"},
+    {file = "ifcopenshell_python-0.7.0-220918-py38-none-win_amd64.whl", hash = "sha256:98e09273642db7cf6f9a5a6c05f2c3d62bb857048008cbbea7ee82dda80108c3"},
+    {file = "ifcopenshell_python-0.7.0-220918-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:10efe9d1e687fc7f5b8aed436bfab8ba2cf9c75e28676331387f8ff438dfe19b"},
+    {file = "ifcopenshell_python-0.7.0-220918-py39-none-macosx_11_0_arm64.whl", hash = "sha256:0054067bb34c07ee64dd69e7f77e24143bd24dca9540b8876dbe4541a94cfcf1"},
+    {file = "ifcopenshell_python-0.7.0-220918-py39-none-manylinux1_x86_64.whl", hash = "sha256:c5f44c92239c2df9c5848788692d433e6d13c224326d1e7a512149fca59da970"},
+    {file = "ifcopenshell_python-0.7.0-220918-py39-none-win_amd64.whl", hash = "sha256:8c73cee0dab275eaed3ae33d177aad1d674bd0f3ca76f017a6233890e6dc0144"},
+    {file = "ifcopenshell_python-0.7.0-220919-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:d3a85d6e0e989ced124a5eda5cf217e3e27dd86eca06d61be49ec07180bef245"},
+    {file = "ifcopenshell_python-0.7.0-220919-py310-none-macosx_11_0_arm64.whl", hash = "sha256:510aba6ebc73f59355442da4761afb90d9e3cd549c92ee5d2f5e3965cbc59c27"},
+    {file = "ifcopenshell_python-0.7.0-220919-py310-none-manylinux1_x86_64.whl", hash = "sha256:25f385f850ca6d41abeda7bfc01768f791f309e26ff2b214ba47efa06b88512c"},
+    {file = "ifcopenshell_python-0.7.0-220919-py310-none-win_amd64.whl", hash = "sha256:006c9595704760983443c62889fb6085f67e430422169e3a3affa4287316cd9c"},
+    {file = "ifcopenshell_python-0.7.0-220919-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:50b51e698fc1f2c2186f2268820aed517e21064d86a47a8c629dad5c57628ac5"},
+    {file = "ifcopenshell_python-0.7.0-220919-py36-none-macosx_11_0_arm64.whl", hash = "sha256:efecc3575da93ada7849edbb43e4dd2cd97ed70f0531971e4e7926c233bce042"},
+    {file = "ifcopenshell_python-0.7.0-220919-py36-none-manylinux1_x86_64.whl", hash = "sha256:bc054fb48f4bd01ace25348a7ae32ef44cfc22b5a4768ae03ce251bd2b5cbf64"},
+    {file = "ifcopenshell_python-0.7.0-220919-py36-none-win_amd64.whl", hash = "sha256:09e241277996925af16f3493ba60252773bebabb4c490a89eefb110905763537"},
+    {file = "ifcopenshell_python-0.7.0-220919-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:679c2dcd3bb2f451dcd49569c87f642c2b18b11c3e8191b47d769d63a5221f14"},
+    {file = "ifcopenshell_python-0.7.0-220919-py37-none-macosx_11_0_arm64.whl", hash = "sha256:6933bac6bbcde3940eb9031c48e1131c9c32e95ee1b9a851e870be98c3f7050b"},
+    {file = "ifcopenshell_python-0.7.0-220919-py37-none-manylinux1_x86_64.whl", hash = "sha256:2e5fe910462d66b33a407a29670286530eca522f953785cd7f37e6c205f210c0"},
+    {file = "ifcopenshell_python-0.7.0-220919-py37-none-win_amd64.whl", hash = "sha256:d57ebd07cf4a148c07ef90a769438dee94da4960a8f671519df06c4930ee58ae"},
+    {file = "ifcopenshell_python-0.7.0-220919-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:0089602ee52d902c8151690e9d27b3aeaf85b0294869f6d44f5939d0503e6cd5"},
+    {file = "ifcopenshell_python-0.7.0-220919-py38-none-macosx_11_0_arm64.whl", hash = "sha256:a9056ee1f706f6d2fa7af8875cacdb47e879fea8cbe5bb87a50683b23f5d742b"},
+    {file = "ifcopenshell_python-0.7.0-220919-py38-none-manylinux1_x86_64.whl", hash = "sha256:3afd282fd7476743c81bf8a9f15a8088843ddf6d5e996f6ca0ca31bf9fab8b71"},
+    {file = "ifcopenshell_python-0.7.0-220919-py38-none-win_amd64.whl", hash = "sha256:3b9799b7c639d855161242632b0d6ec7c05728e982c3acab6d10df1d1c68c08f"},
+    {file = "ifcopenshell_python-0.7.0-220919-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:ddd3e99e7ebb6e34c3786aaa8ba32e932c4ea16830a46cab8e25acd7f648552c"},
+    {file = "ifcopenshell_python-0.7.0-220919-py39-none-macosx_11_0_arm64.whl", hash = "sha256:dc4fc18fb927bc982f377771b645ad2ab78b5012d9790528842f92be515790f5"},
+    {file = "ifcopenshell_python-0.7.0-220919-py39-none-manylinux1_x86_64.whl", hash = "sha256:fb999d21905287243fbddf937d7d640e5c7e6b1089f12bec3480ac13db310228"},
+    {file = "ifcopenshell_python-0.7.0-220919-py39-none-win_amd64.whl", hash = "sha256:6905606f7de020248d71eb3e99a2d831b2ce641fea062bd8ffa60e0cbe1c1dc4"},
+    {file = "ifcopenshell_python-0.7.0-220920-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:59f42c2ae1c72e9b177f6fb2b56e1b8930b34b06597dd5f6b19baa5c5d1e4e1f"},
+    {file = "ifcopenshell_python-0.7.0-220920-py310-none-macosx_11_0_arm64.whl", hash = "sha256:0be6e8be6d7e41d529ba298512e65f3cf67845b214cb596cc555b34aa4b4aad1"},
+    {file = "ifcopenshell_python-0.7.0-220920-py310-none-manylinux1_x86_64.whl", hash = "sha256:0f0593a9e752758649c70966164488ec7a2733951d9bff5fb7eb673c482272bd"},
+    {file = "ifcopenshell_python-0.7.0-220920-py310-none-win_amd64.whl", hash = "sha256:45e8638ea9ad780eae7eaf6fd16202360c3a0b4c490ad9937817104586c86e1d"},
+    {file = "ifcopenshell_python-0.7.0-220920-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:3fd1eb0166193bab846ee90ac4cb8c2694a3def61930027631f7c2aec60ccc53"},
+    {file = "ifcopenshell_python-0.7.0-220920-py36-none-macosx_11_0_arm64.whl", hash = "sha256:632a481dfeb27cf115839d25e354527875effadf8c5757d4abfce03dbacf7db8"},
+    {file = "ifcopenshell_python-0.7.0-220920-py36-none-manylinux1_x86_64.whl", hash = "sha256:5f803ef1fed6bbd1a3c57dc2a6a670233248409b84dd2ca548199b24b2850f69"},
+    {file = "ifcopenshell_python-0.7.0-220920-py36-none-win_amd64.whl", hash = "sha256:b171ab516133beccc6a9248853a78a0fd891fad360a276c2d2c24762857646e3"},
+    {file = "ifcopenshell_python-0.7.0-220920-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:5f8b0a162883d9e2c0fca603a25f63147644b96d7e63cca71dbfedd7ee69345c"},
+    {file = "ifcopenshell_python-0.7.0-220920-py37-none-macosx_11_0_arm64.whl", hash = "sha256:86d476b8f3164e33757a7211512fa77d679b93e04714ea9add77435ed4d7955a"},
+    {file = "ifcopenshell_python-0.7.0-220920-py37-none-manylinux1_x86_64.whl", hash = "sha256:664c53aa9f3a78f8ee6154253c9c8ef926beaf7f035c9e43f243884685930707"},
+    {file = "ifcopenshell_python-0.7.0-220920-py37-none-win_amd64.whl", hash = "sha256:c1dcdebeecf6f60f4994059129833035b0b0561f12bc6bef644f14ccf5330290"},
+    {file = "ifcopenshell_python-0.7.0-220920-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:6154308624479bedfc7a76eddae14fb48c7242f8096b7b4a98c841ae797da167"},
+    {file = "ifcopenshell_python-0.7.0-220920-py38-none-macosx_11_0_arm64.whl", hash = "sha256:0ac0c5d70b57888ce86c69eed7e8c3c006a83b79de183071210a7d9075904dfa"},
+    {file = "ifcopenshell_python-0.7.0-220920-py38-none-manylinux1_x86_64.whl", hash = "sha256:300f1ba72bfe30a03ff7530ec19b3fac8bca44ad340ee3548419c6d937467c94"},
+    {file = "ifcopenshell_python-0.7.0-220920-py38-none-win_amd64.whl", hash = "sha256:12dc46635633714f9b808afdb278fb2ced59bf8d650464291269d334d072f07d"},
+    {file = "ifcopenshell_python-0.7.0-220920-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:459e0fd76d9dc93925afa1edc88dcea828e3a83b1ae3dfda95cc086b72e0ff90"},
+    {file = "ifcopenshell_python-0.7.0-220920-py39-none-macosx_11_0_arm64.whl", hash = "sha256:ece554f2a6388fcc53012ae2606a96acdce0b3bfe3d0f6f23a1bb6857b0db8a0"},
+    {file = "ifcopenshell_python-0.7.0-220920-py39-none-manylinux1_x86_64.whl", hash = "sha256:7af4e5a8f28cadea2daa7b73cd7ce343553a06ff78f864aa18fe213054137786"},
+    {file = "ifcopenshell_python-0.7.0-220920-py39-none-win_amd64.whl", hash = "sha256:94824b67e44e580f62cd00a76834cbc6811d52341690406f6799ad0c10feaa6b"},
+    {file = "ifcopenshell_python-0.7.0-220921-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:707f10e72558c2f3589535b479571501a176a94363da3b77aa135bfdc3be60f0"},
+    {file = "ifcopenshell_python-0.7.0-220921-py310-none-macosx_11_0_arm64.whl", hash = "sha256:21f9c0e7c357e88adfafc0313497675739ee26c9e07406a70eab8419b8fa16b6"},
+    {file = "ifcopenshell_python-0.7.0-220921-py310-none-manylinux1_x86_64.whl", hash = "sha256:b1ddebb100a173891d7414d09ec0cda243fbcb008e3103a7b92f0f8bf2f3e111"},
+    {file = "ifcopenshell_python-0.7.0-220921-py310-none-win_amd64.whl", hash = "sha256:c5fd8fb6ecb3c6c834341bbca884994737bf1daf6b9ada144922c16d68bc05f5"},
+    {file = "ifcopenshell_python-0.7.0-220921-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:09a15d03902a231d18c5a37f26d9e15b326240a16854348166022b25d54ddbec"},
+    {file = "ifcopenshell_python-0.7.0-220921-py36-none-macosx_11_0_arm64.whl", hash = "sha256:c65dc664bf1f957ced660b61bcf1baff84ce50cbedc5f1d520f806e3efba34eb"},
+    {file = "ifcopenshell_python-0.7.0-220921-py36-none-manylinux1_x86_64.whl", hash = "sha256:68183692bf0137102f6ee240fa717dfb3557b32fef7f6cab48cfc733b5f0b56c"},
+    {file = "ifcopenshell_python-0.7.0-220921-py36-none-win_amd64.whl", hash = "sha256:c89d1974cb65551502b99c80eed97ad4d1d34530f7bc34074c9b82bff7f1e168"},
+    {file = "ifcopenshell_python-0.7.0-220921-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:af0512b2c8754413ddfe758cfb47552aa932b2aa2889c15d627527ee5c65865f"},
+    {file = "ifcopenshell_python-0.7.0-220921-py37-none-macosx_11_0_arm64.whl", hash = "sha256:27e488772c7c0cfb69d5055f584de846db585128f7c48ed2fcbfe44d46130b0c"},
+    {file = "ifcopenshell_python-0.7.0-220921-py37-none-manylinux1_x86_64.whl", hash = "sha256:a38b6c84d88e97c93f5cfca66c3ef6e6fba1d895a05d605fc18217ab40cc7ecd"},
+    {file = "ifcopenshell_python-0.7.0-220921-py37-none-win_amd64.whl", hash = "sha256:f604493ff185086ce5b41656e17a2908ac7aba40ce71cec2ab286756991a1bbe"},
+    {file = "ifcopenshell_python-0.7.0-220921-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:27892347b842a8624f3b65a9cd31ac3aa697be41f95df75f7ed28c9da353d3a8"},
+    {file = "ifcopenshell_python-0.7.0-220921-py38-none-macosx_11_0_arm64.whl", hash = "sha256:b9ad6355be86e1fd8f24de61442fe60b278f32ef408e0ba98d89048866b30dc0"},
+    {file = "ifcopenshell_python-0.7.0-220921-py38-none-manylinux1_x86_64.whl", hash = "sha256:1e915cf9b9d73f290ec36deff30fc37922b7870884729def01c20c01aec6e8a7"},
+    {file = "ifcopenshell_python-0.7.0-220921-py38-none-win_amd64.whl", hash = "sha256:51978b10ff0cc32f2d3e7d4186f166bba2177f02e0a10de24aaa31f19e4094a5"},
+    {file = "ifcopenshell_python-0.7.0-220921-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:5f0635311ff1389d6da701e1b4212dcc56b0ceba85b3b09130fac7fed5242ef7"},
+    {file = "ifcopenshell_python-0.7.0-220921-py39-none-macosx_11_0_arm64.whl", hash = "sha256:4402b496e074d970d0043b03f0d489ba201bcf7e6ce199e7cd25697e0253217f"},
+    {file = "ifcopenshell_python-0.7.0-220921-py39-none-manylinux1_x86_64.whl", hash = "sha256:2380854952fa112a6c04715609bc931299d3fc81a57e03493ae6a69ffc0d84df"},
+    {file = "ifcopenshell_python-0.7.0-220921-py39-none-win_amd64.whl", hash = "sha256:8383077a89ce93687df23d03cff96a5781724adf213270a6ce57775ef628c4a1"},
+    {file = "ifcopenshell_python-0.7.0-220923-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:48236be8943cd5983ed362bc8715ffba3aa1a32bfa2e15b164a18610e53f5b7d"},
+    {file = "ifcopenshell_python-0.7.0-220923-py310-none-macosx_11_0_arm64.whl", hash = "sha256:ae9bb589185fecf1b393ed9e95494b36f6ddcc0bc9ccb2c70dae68a4024789b2"},
+    {file = "ifcopenshell_python-0.7.0-220923-py310-none-manylinux1_x86_64.whl", hash = "sha256:7051350f246b7a197dd00cbe37e73d032cc13fc04b15625dd18f5e8af743b396"},
+    {file = "ifcopenshell_python-0.7.0-220923-py310-none-win_amd64.whl", hash = "sha256:641882a385b4e39b2ad0447af80bf93d20b47df4b3da3eeb08741c60f5a6ecac"},
+    {file = "ifcopenshell_python-0.7.0-220923-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:6c086a654297bf78a24566f09602a1b4bedf16819c8a325d76cc4baaca9a7928"},
+    {file = "ifcopenshell_python-0.7.0-220923-py36-none-macosx_11_0_arm64.whl", hash = "sha256:2ebc8fb2da302daac6f96ff522500e6aece026a482525f385e425efe715a999f"},
+    {file = "ifcopenshell_python-0.7.0-220923-py36-none-manylinux1_x86_64.whl", hash = "sha256:5b70d4c3a6cb9583dcd76a6e38e8b8419250c1933eae89743a0be7971a5f5da5"},
+    {file = "ifcopenshell_python-0.7.0-220923-py36-none-win_amd64.whl", hash = "sha256:cca8aef5794068b4dbdf48a88ea0c34fb0c128fdfe968a4e2d24c5d3520589d0"},
+    {file = "ifcopenshell_python-0.7.0-220923-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:ee7fd4fbd60100f04bee181ce529ba2cc0b39ab4e7f522f52157c0891d44ee81"},
+    {file = "ifcopenshell_python-0.7.0-220923-py37-none-macosx_11_0_arm64.whl", hash = "sha256:1cf9ed974dcd00d5fbef09b23c25f366ae977b7ab929a38fe7e6aa635ed39c9b"},
+    {file = "ifcopenshell_python-0.7.0-220923-py37-none-manylinux1_x86_64.whl", hash = "sha256:dbe7f0db6efc8f0b1d1de8e31e7d9ca3b3f965df6832e8cc8fffed82b399df77"},
+    {file = "ifcopenshell_python-0.7.0-220923-py37-none-win_amd64.whl", hash = "sha256:103eb1950cbe46f0e2beb902793e16b31b289fb1b60bcc115af2282a13cc5b68"},
+    {file = "ifcopenshell_python-0.7.0-220923-py38-none-macosx_10_15_x86_64.whl", hash = "sha256:918c52f0230f619593db8a1fdf56f8965ce5cc5c46f329a30152237c25fe5114"},
+    {file = "ifcopenshell_python-0.7.0-220923-py38-none-macosx_11_0_arm64.whl", hash = "sha256:29430f2994782a9d4b286a0171490202f43ae67030abd9c3d3b467ab723d4eeb"},
+    {file = "ifcopenshell_python-0.7.0-220923-py38-none-manylinux1_x86_64.whl", hash = "sha256:8ce0c4acf36c6bf3954a828898ac5b012647e9244f300af0e7a7f1015ed77d8f"},
+    {file = "ifcopenshell_python-0.7.0-220923-py38-none-win_amd64.whl", hash = "sha256:6fc771e1912e276ec2b31e42694b5b72f1d276edb252272e89d2b3da357e30fe"},
+    {file = "ifcopenshell_python-0.7.0-220923-py39-none-macosx_10_15_x86_64.whl", hash = "sha256:cb60f7f57108f13c12841deeef4d95eca44629fbf4843565971e4954e07ad4bd"},
+    {file = "ifcopenshell_python-0.7.0-220923-py39-none-macosx_11_0_arm64.whl", hash = "sha256:d3dcd20d0597596736b1298a8c97caeb8252b7acec72e6e45688d11c110c8876"},
+    {file = "ifcopenshell_python-0.7.0-220923-py39-none-manylinux1_x86_64.whl", hash = "sha256:da564aa7b4deb2863afea6b1d90f3bfa3abb084fbfa3d88361cac39430f158b5"},
+    {file = "ifcopenshell_python-0.7.0-220923-py39-none-win_amd64.whl", hash = "sha256:12c15acc0dc46949d434f187ecd1fb47a91e9d07f3122a9e1f4664c1b25ebcef"},
+    {file = "ifcopenshell_python-0.7.0-220924-py310-none-macosx_10_15_x86_64.whl", hash = "sha256:e97bc0b306bd1eefc6789575121eba75294d3b1ae803e581fa67185ef275ae2b"},
+    {file = "ifcopenshell_python-0.7.0-220924-py310-none-macosx_11_0_arm64.whl", hash = "sha256:1ef29b6b0c4f462313b48916c8fbdefe1af4a859f9b6be0f2393920485e8cfa3"},
+    {file = "ifcopenshell_python-0.7.0-220924-py310-none-manylinux1_x86_64.whl", hash = "sha256:f9c7ed799a5ee22350e7efe648d7dca346afabc932331166908eb9f4f68c18aa"},
+    {file = "ifcopenshell_python-0.7.0-220924-py310-none-win_amd64.whl", hash = "sha256:ab1f1de0ba2c020b30040765af1a17e85d1d426dcae40b2c71ea708cc45982dd"},
+    {file = "ifcopenshell_python-0.7.0-220924-py36-none-macosx_10_15_x86_64.whl", hash = "sha256:71b5d112419bedd0f6fd7fecea4e9af3244417ddc106d92f7f86da71128ce422"},
+    {file = "ifcopenshell_python-0.7.0-220924-py36-none-macosx_11_0_arm64.whl", hash = "sha256:43c5e868321a37747a7046a26ed84e1f9da989a9aa3e24c6f9fdc410020eb28d"},
+    {file = "ifcopenshell_python-0.7.0-220924-py36-none-manylinux1_x86_64.whl", hash = "sha256:5a43cf1871b255f9af1b67b19eaaa55ab43b0b2f9caa67e146c5db963dc13788"},
+    {file = "ifcopenshell_python-0.7.0-220924-py36-none-win_amd64.whl", hash = "sha256:5c8cce1220fefe3eba1aa6232f7c8cd5b6ef576373c162143b250c0b3852a880"},
+    {file = "ifcopenshell_python-0.7.0-220924-py37-none-macosx_10_15_x86_64.whl", hash = "sha256:3c3a9e9d49a565367baba8ff33b9da486ae70a5ba376b2323873c8c05258efca"},
+    {file = "ifcopenshell_python-0.7.0-220924-py37-none-macosx_11_0_arm64.whl", hash = "sha256:5a8084115467224da893d389a3598e3735267a5a12a3cb65f6175f39d38fb0a2"},
+    {file = "ifcopenshell_python-0.7.0-220924-py37-none-win_amd64.whl", hash = "sha256:091cc1ec9b818b23be528f39d3484289746ad39d441e3a6c7446d2a488e152cf"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
@@ -381,11 +684,6 @@ pyparsing = [
 pytest = [
     {file = "pytest-7.1.3-py3-none-any.whl", hash = "sha256:1377bda3466d70b55e3f5cecfa55bb7cfcf219c7964629b967c37cf0bda818b7"},
     {file = "pytest-7.1.3.tar.gz", hash = "sha256:4f365fec2dff9c1162f834d9f18af1ba13062db0c708bf7b946f8a5c76180c39"},
-]
-python-ifcopenshell = [
-    {file = "python_ifcopenshell-1.0.5-py3-none-macosx_10_15_x86_64.whl", hash = "sha256:3ba3262a5e644f81ec353136c6b7adf5b3f00c76f17c0e78d9d5d87d23ccab62"},
-    {file = "python_ifcopenshell-1.0.5-py3-none-manylinux1_x86_64.whl", hash = "sha256:b6f87229f328625530be2fc6f56b0493cfd77a4dd569f370b1dfaa280c2131fc"},
-    {file = "python_ifcopenshell-1.0.5-py3-none-win_amd64.whl", hash = "sha256:ca31c077388bd16eb23bd82d06d19b85b928edcc11de4f54dde6a41dc882912f"},
 ]
 requests = [
     {file = "requests-2.28.1-py3-none-any.whl", hash = "sha256:8fefa2a1a1365bf5520aac41836fbee479da67864514bdb821f31ce07ce65349"},
