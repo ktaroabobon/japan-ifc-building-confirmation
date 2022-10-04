@@ -51,7 +51,7 @@ def test_for_health_check_with_params(logger: logging.Logger = logging.getLogger
         'Content-Type': 'application/json',
         # 'Authorization': f"Bearer {config.API_TOKEN}"
     }
-    response = requests.get(url=url, data=json.dumps(data), headers=headers)
+    response = requests.post(url=url, data=json.dumps(data), headers=headers)
     logger.info("Send request and get response")
 
     logger.info(f"status code: {response.status_code}")
@@ -82,7 +82,7 @@ def test_for_law21_1(logger: logging.Logger = logging.getLogger(__name__)):
 
     logger.info("Set for request")
 
-    response = requests.get(url=url, data=json.dumps(data), headers=headers)
+    response = requests.post(url=url, data=json.dumps(data), headers=headers)
     logger.info("Send request and get response")
 
     logger.info(f"status code: {response.status_code}")
