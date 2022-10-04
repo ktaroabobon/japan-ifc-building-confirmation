@@ -7,9 +7,9 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-python-ifcopenshell = "^1.0.5"
 fastapi = "^0.85.0"
 uvicorn = "^0.18.3"
+ifcopenshell-python = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.3"

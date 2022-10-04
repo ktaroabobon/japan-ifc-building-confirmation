@@ -47,6 +47,19 @@ healthcheck:
 	     --url 'http://0.0.0.0:8888/health/' \
 	     --header 'Content-Type: application/json'
 
+.PHONY: prod/healthcheck
+prod/healthcheck:
+	curl --request GET -sL \
+	     --url 'http://0.0.0.0:8080/health/' \
+	     --header 'Content-Type: application/json'
+
+.PHONY: prod/healthcheck/params
+prod/healthcheck/params:
+	curl --request GET -sL \
+	     --url 'http://0.0.0.0:8080/health/params' \
+	     --header 'Content-Type: application/json' \
+	     --data-raw '{"ifc": "value1", "zipped": true}'
+
 .PHONY: docs
 docs:
 	open http://0.0.0.0:8888/docs

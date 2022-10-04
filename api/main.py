@@ -25,13 +25,13 @@ def health_check():
     return {"health check": "ok"}
 
 
-@app.get("/health/params")
+@app.post("/health/params")
 def health_check_with_params(body: HealthAPIRequest):
     logger.info("this is health check with params")
     return body
 
 
-@app.get("/law/21-1")
+@app.post("/law/21-1")
 def law_21_1(body: APIRequest):
     logger.info("Start Law 21_1")
     message = "Failed"
