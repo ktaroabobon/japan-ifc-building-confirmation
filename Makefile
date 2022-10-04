@@ -93,6 +93,6 @@ app/poetry/update:
 app/poetry/add:
 	$(MAKE) -C jpnifcbc poetry/add package=$(package)
 
-.PHONY: deploy
-deploy:
-	zsh ./deploy.sh >> ./deploy.log
+.PHONY: images
+images:
+	docker images
