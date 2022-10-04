@@ -8,8 +8,8 @@ logging.basicConfig(level=logging.INFO)
 base_dir = Path().resolve()
 sys.path.append(base_dir / "operations")
 
-from operations.file_operation import zip_str, unzip_str
-from config import API_HOST_URL
+from operations.file_operation import zip_str
+import config
 
 
 def get_test_ifc(zip: bool = False) -> str:
@@ -25,8 +25,13 @@ def get_test_ifc(zip: bool = False) -> str:
 
 def test_for_health_check(logger: logging.Logger = logging.getLogger(__name__)):
     logger.info("[START] Test for health check")
-    url = f"{API_HOST_URL}/health"
-    response = requests.get(url=url)
+    url = f"{config.API_HOST_URL}/health"
+    headers = {
+        'Content-Type': 'application/json',
+        # 'Authorization': f"Bearer {config.API_TOKEN}"
+    }
+    response = requests.get(url=url, headers=headers)
+
     logger.info("Send request and get response")
 
     logger.info(f"status code: {response.status_code}")
@@ -37,13 +42,14 @@ def test_for_health_check(logger: logging.Logger = logging.getLogger(__name__)):
 
 def test_for_health_check_with_params(logger: logging.Logger = logging.getLogger(__name__)):
     logger.info("[START] Test for health check with params")
-    url = f"{API_HOST_URL}/health/params"
+    url = f"{config.API_HOST_URL}/health/params"
     data = {
         'ifc': 'test',
         'zipped': True,
     }
     headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        # 'Authorization': f"Bearer {config.API_TOKEN}"
     }
     response = requests.get(url=url, data=json.dumps(data), headers=headers)
     logger.info("Send request and get response")
@@ -58,9 +64,10 @@ def test_for_law21_1(logger: logging.Logger = logging.getLogger(__name__)):
     logger.info("[START] Test for API")
     ifc_data = get_test_ifc(zip=True)
 
-    url = f"{API_HOST_URL}/law/21-1"
+    url = f"{config.API_HOST_URL}/law/21-1"
     headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        # 'Authorization': f"Bearer {config.API_TOKEN}"
     }
     data = {
         'ifc': ifc_data,
@@ -86,6 +93,8 @@ def test_for_law21_1(logger: logging.Logger = logging.getLogger(__name__)):
 
 if __name__ == '__main__':
     logger = logging.getLogger(__name__)
-    # test_for_health_check(logger)
-    # test_for_health_check_with_params(logger)
-    test_for_law21_1(logger=logger)
+    logger.info("Start test")
+    test_for_health_check(logger)
+    test_for_health_check_with_params(logger)
+    test_for_law21_1(logger)
+    logger.info("End test")
