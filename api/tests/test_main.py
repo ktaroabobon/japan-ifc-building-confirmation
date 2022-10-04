@@ -28,7 +28,7 @@ def test_for_health_check(logger: logging.Logger = logging.getLogger(__name__)):
     url = f"{config.API_HOST_URL}/health"
     headers = {
         'Content-Type': 'application/json',
-        # 'Authorization': f"Bearer {config.API_TOKEN}"
+        'Authorization': f"Bearer {config.API_TOKEN}"
     }
     response = requests.get(url=url, headers=headers)
 
@@ -49,7 +49,7 @@ def test_for_health_check_with_params(logger: logging.Logger = logging.getLogger
     }
     headers = {
         'Content-Type': 'application/json',
-        # 'Authorization': f"Bearer {config.API_TOKEN}"
+        'Authorization': f"Bearer {config.API_TOKEN}"
     }
     response = requests.post(url=url, data=json.dumps(data), headers=headers)
     logger.info("Send request and get response")
@@ -67,7 +67,7 @@ def test_for_law21_1(logger: logging.Logger = logging.getLogger(__name__)):
     url = f"{config.API_HOST_URL}/law/21-1"
     headers = {
         'Content-Type': 'application/json',
-        # 'Authorization': f"Bearer {config.API_TOKEN}"
+        'Authorization': f"Bearer {config.API_TOKEN}"
     }
     data = {
         'ifc': ifc_data,

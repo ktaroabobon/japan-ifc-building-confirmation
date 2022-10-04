@@ -92,3 +92,7 @@ app/poetry/update:
 .PHONY: app/poetry/add
 app/poetry/add:
 	$(MAKE) -C jpnifcbc poetry/add package=$(package)
+
+.PHONY: deploy
+deploy:
+	zsh ./deploy.sh >> ./deploy.log
