@@ -3,6 +3,8 @@ from pathlib import Path
 import requests
 import sys
 import logging
+import base64
+import gzip
 
 logging.basicConfig(level=logging.INFO)
 base_dir = Path().resolve()
@@ -88,10 +90,42 @@ def test_for_law21_1(logger: logging.Logger = logging.getLogger(__name__)):
     logger.info("[END] Test for API")
 
 
+def test_zip():
+    target = base_dir / "tests" / "data" / "test.txt"
+    # target = base_dir / "tests" / "data" / "test_base64.txt"
+    with target.open('rb') as f:
+        decompressed_value = f.read()
+    print(decompressed_value[:10])
+    # value = gzip.decompress(base64.b64decode(decompressed_value))
+    value = gzip.decompress(decompressed_value)
+
+    save_data_path = base_dir / "tests" / "data" / "test_ifc.txt"
+    with save_data_path.open('w') as f:
+        f.write(value.decode(encoding='utf-8'))
+
+
+def make_sample():
+    target = base_dir / "tests" / "data" / "test.ifc"
+    with target.open('r') as f:
+        original_data = f.read()
+    compressed_data = gzip.compress(original_data.encode(encoding='utf-8'))
+    print(compressed_data[:10])
+    compressed_base64_data = base64.b64encode(compressed_data)
+    save_path = base_dir / "tests" / "data" / "sample.txt"
+    with save_path.open('wb') as f:
+        f.write(compressed_data)
+
+    save_base64_path = base_dir / "tests" / "data" / "sample_base64.txt"
+    with save_base64_path.open('w') as f:
+        f.write(compressed_base64_data.decode(encoding='utf-8'))
+
+
 if __name__ == '__main__':
     logger = logging.getLogger(__name__)
     logger.info("Start test")
-    test_for_health_check(logger)
-    test_for_health_check_with_params(logger)
-    test_for_law21_1(logger)
+    # test_for_health_check(logger)
+    # test_for_health_check_with_params(logger)
+    # test_for_law21_1(logger)
+    test_zip()
+    make_sample()
     logger.info("End test")
