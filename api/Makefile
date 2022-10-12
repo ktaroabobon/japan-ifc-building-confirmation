@@ -67,3 +67,7 @@ docs:
 .PHONY: test
 test:
 	$(DOCKER_COMPOSE_IMPL) exec api poetry run python tests/test_main.py
+
+.PHONY: token
+token:
+	gcloud auth print-identity-token | pbcopy

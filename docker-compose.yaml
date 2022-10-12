@@ -27,14 +27,14 @@ services:
       - "8888:8888"
     tty: true
 
-  prod-api:
-    container_name: prod-api
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - "8080:8080"
-    tty: true
+#  prod-api:
+#    container_name: prod-api
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
+#    ports:
+#      - "8080:8080"
+#    tty: true
 
 volumes:
   cache-app:

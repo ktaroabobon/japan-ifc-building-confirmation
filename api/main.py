@@ -1,16 +1,17 @@
-import json
 from pathlib import Path
 import shutil
 import traceback
 from logging import getLogger
+import json
 
 from fastapi import FastAPI, Response
+from fastapi.middleware.cors import CORSMiddleware
 import ifcopenshell
 
 from jpnifcbc.law.standard_methods.law21_1 import Confirmation as Law21_1
 from schemas.api_request import APIRequest, HealthAPIRequest
 from schemas.api_response import APIResponse, AnalysisResult
-from operations.file_operation import unzip_str
+from operations.file_operation import gunzip_str
 from operations.object_operation import IfcOpenShellObj
 
 base_dir = Path().resolve()
@@ -19,16 +20,29 @@ logger = getLogger('uvicorn')
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:5173",
+    "https://ktaroabobon.github.io",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.get("/health")
 def health_check():
-    return {"health check": "ok"}
+    body = {"health check": "ok"}
+    return Response(content=json.dumps(body))
 
 
 @app.post("/health/params")
 def health_check_with_params(body: HealthAPIRequest):
     logger.info("this is health check with params")
-    return body
+    return Response(content=json.dumps(body.dict()))
 
 
 @app.post("/law/21-1")
@@ -37,14 +51,13 @@ def law_21_1(body: APIRequest):
     message = "Failed"
     result = None
     metadata = None
-    status_code = 500
     try:
         request = body.dict()
         ifc = request["ifc"]
         zipped = request["zipped"]
         metadata = request["metadata"]
         if zipped:
-            ifc = unzip_str(ifc)
+            ifc = gunzip_str(ifc)
 
         tmp_dir = base_dir / "tmp"
         if not tmp_dir.exists():
@@ -70,7 +83,6 @@ def law_21_1(body: APIRequest):
             exceptionElements=IfcOpenShellObj.get_obj_info(exception_elements)
         )
         message = "Success"
-        status_code = 200
         logger.debug("Success Law 21_1")
 
     except Exception as e:
@@ -87,4 +99,4 @@ def law_21_1(body: APIRequest):
     )
 
     logger.info("End Law 21_1")
-    return Response(content=response.json(), media_type="application/json", status_code=status_code)
+    return Response(content=response.json())

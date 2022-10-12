@@ -96,3 +96,7 @@ app/poetry/add:
 .PHONY: images
 images:
 	docker images
+
+.PHONY: token
+token:
+	$(MAKE) -C api token

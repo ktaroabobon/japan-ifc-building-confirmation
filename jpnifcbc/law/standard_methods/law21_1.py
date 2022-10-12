@@ -63,12 +63,19 @@ class Confirmation(BaseConfirmation):
 
             for storey in storeys:
                 for d in storey.IsDefinedBy:
-                    property_set = d.RelatingPropertyDefinition
-                    if hasattr(property_set, "HasProperties"):
-                        for property in property_set.HasProperties:
-                            if property.is_a('IfcPropertySingleValue') and property.Name == "AboveGround":
-                                if property.NominalValue.wrappedValue:
-                                    cnt += 1
+                    try:
+                        property_set = d.RelatingPropertyDefinition
+                        if hasattr(property_set, "HasProperties"):
+                            for property in property_set.HasProperties:
+                                if property.is_a('IfcPropertySingleValue') and property.Name == "AboveGround":
+                                    if property.NominalValue.wrappedValue:
+                                        cnt += 1
+                    except AttributeError:
+                        """
+                        FIXME:
+                        AttributeError: entity instance of type 'IFC2X3.IfcRelDefinesByType' has no attribute 'RelatingPropertyDefinition'
+                        """
+                        pass
 
             if cnt >= 4:
                 flag = True
@@ -90,20 +97,27 @@ class Confirmation(BaseConfirmation):
             flag = False
 
             for d in b.IsDefinedBy:
-                property_set = d.RelatingPropertyDefinition
-                if hasattr(property_set, "HasProperties"):
-                    for property in property_set.HasProperties:
-                        if property.is_a('IfcPropertySingleValue') and property.Name == "Height":
-                            if property.NominalValue.wrappedValue > 16000:
-                                flag = True
-                                break
+                try:
+                    property_set = d.RelatingPropertyDefinition
+                    if hasattr(property_set, "HasProperties"):
+                        for property in property_set.HasProperties:
+                            if property.is_a('IfcPropertySingleValue') and property.Name == "Height":
+                                if property.NominalValue.wrappedValue > 16000:
+                                    flag = True
+                                    break
 
-                if hasattr(property_set, "Quantities"):
-                    for q in property_set.Quantities:
-                        if q.Name == "Height":
-                            if Quantity.value(q) > 16000:
-                                flag = True
-                                break
+                    if hasattr(property_set, "Quantities"):
+                        for q in property_set.Quantities:
+                            if q.Name == "Height":
+                                if Quantity.value(q) > 16000:
+                                    flag = True
+                                    break
+                except AttributeError:
+                    """
+                    FIXME:
+                    AttributeError: entity instance of type 'IFC2X3.IfcRelDefinesByType' has no attribute 'RelatingPropertyDefinition'
+                    """
+                    pass
 
             return flag
 
@@ -121,25 +135,32 @@ class Confirmation(BaseConfirmation):
             flag = True
 
             for d in b.IsDefinedBy:
-                property_set = d.RelatingPropertyDefinition
-                if hasattr(property_set, "HasProperties"):
-                    for property in property_set.HasProperties:
-                        if property.is_a('IfcPropertySingleValue'):
-                            if property_set.Name == "Pset_BuildingUse" and property.Name == "MarketCategory":
-                                if property.NominalValue.wrappedValue not in ["倉庫", "自動車車庫", "自動車修理工場"]:
-                                    flag = False
-                                    break
-                            if property.Name == "Height":
-                                if property.NominalValue.wrappedValue > 13000:
-                                    flag = False
-                                    break
+                try:
+                    property_set = d.RelatingPropertyDefinition
+                    if hasattr(property_set, "HasProperties"):
+                        for property in property_set.HasProperties:
+                            if property.is_a('IfcPropertySingleValue'):
+                                if property_set.Name == "Pset_BuildingUse" and property.Name == "MarketCategory":
+                                    if property.NominalValue.wrappedValue not in ["倉庫", "自動車車庫", "自動車修理工場"]:
+                                        flag = False
+                                        break
+                                if property.Name == "Height":
+                                    if property.NominalValue.wrappedValue > 13000:
+                                        flag = False
+                                        break
 
-                if hasattr(property_set, "Quantities"):
-                    for q in property_set.Quantities:
-                        if q.Name == "Height":
-                            if Quantity.value(q) > 13000:
-                                flag = False
-                                break
+                    if hasattr(property_set, "Quantities"):
+                        for q in property_set.Quantities:
+                            if q.Name == "Height":
+                                if Quantity.value(q) > 13000:
+                                    flag = False
+                                    break
+                except AttributeError:
+                    """
+                    FIXME:
+                    AttributeError: entity instance of type 'IFC2X3.IfcRelDefinesByType' has no attribute 'RelatingPropertyDefinition'
+                    """
+                    pass
 
             return flag
 
