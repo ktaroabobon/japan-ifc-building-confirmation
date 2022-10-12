@@ -9,7 +9,7 @@ help:
 
 .PHONY: auth
 auth:
-	gcloud componets update
+	gcloud components update
 	gcloud auth	login
 	gcloud auth configure-docker
 
@@ -50,10 +50,10 @@ cloud-run/deploy:
 
 .PHONY: deploy/all
 deploy/all:
-	$(MAKE) -C deploy gcloud/set/config
-	$(MAKE) -C deploy build/prod TAG=$(TAG)
-	$(MAKE) -C deploy gcr/deploy TAG=$(TAG)
-	$(MAKE) -C deploy cloud-run/deploy TAG=$(TAG)
+	$(MAKE) gcloud/set/config -f deploy.mk
+	$(MAKE) build/prod TAG=$(TAG) -f deploy.mk
+	$(MAKE) gcr/deploy TAG=$(TAG) -f deploy.mk
+	$(MAKE) cloud-run/deploy TAG=$(TAG) -f deploy.mk
 
 .PHONY: test/prod
 test/prod: API_HOST_URL=https://japan-ifc-building-confirmation-api-vjxfkgpbxa-an.a.run.app
