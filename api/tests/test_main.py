@@ -115,9 +115,21 @@ def make_sample():
     with save_path.open('wb') as f:
         f.write(compressed_data)
 
+    ifc_data = compressed_base64_data.decode(encoding='utf-8')
     save_base64_path = base_dir / "tests" / "data" / "sample_base64.txt"
     with save_base64_path.open('w') as f:
-        f.write(compressed_base64_data.decode(encoding='utf-8'))
+        f.write(ifc_data)
+
+    data = {
+        'ifc': ifc_data,
+        'zipped': True,
+        'metadata': {
+            'file_name': 'test.ifc'
+        }
+    }
+    post_data_file_path = base_dir / "tests" / "data" / "post_data.json"
+    with post_data_file_path.open('w') as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
 
 
 if __name__ == '__main__':
@@ -126,6 +138,6 @@ if __name__ == '__main__':
     # test_for_health_check(logger)
     # test_for_health_check_with_params(logger)
     # test_for_law21_1(logger)
-    test_zip()
+    # test_zip()
     make_sample()
     logger.info("End test")

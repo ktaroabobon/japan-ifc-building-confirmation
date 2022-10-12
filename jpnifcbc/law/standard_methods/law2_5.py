@@ -53,14 +53,21 @@ class Confirmation(BaseConfirmation):
 
         for element in self.target_elements:
             for d in element.IsDefinedBy:
-                property_set = d.RelatingPropertyDefinition
-                if hasattr(property_set, "HasProperties"):
-                    for property in property_set.HasProperties:
-                        if property.is_a('IfcPropertySingleValue') and property.Name == "LoadBearing":
-                            if property.NominalValue.wrappedValue:
-                                conformity_elements.append(element)
-                            else:
-                                not_conformity_elements.append(element)
+                try:
+                    property_set = d.RelatingPropertyDefinition
+                    if hasattr(property_set, "HasProperties"):
+                        for property in property_set.HasProperties:
+                            if property.is_a('IfcPropertySingleValue') and property.Name == "LoadBearing":
+                                if property.NominalValue.wrappedValue:
+                                    conformity_elements.append(element)
+                                else:
+                                    not_conformity_elements.append(element)
+                except AttributeError:
+                    """
+                    FIXME:
+                    AttributeError: entity instance of type 'IFC2X3.IfcRelDefinesByType' has no attribute 'RelatingPropertyDefinition'
+                    """
+                    pass
 
         self.conformity_elements = conformity_elements
         self.not_conformity_elements = not_conformity_elements

@@ -1,4 +1,5 @@
 import lzma
+import gzip
 import base64
 
 
@@ -27,4 +28,18 @@ def unzip_str(text: str, encoding: str = 'utf-8') -> str:
         str: 展開後の文字列
     """
     binary_data = lzma.decompress(base64.b85decode(text))
+    return binary_data.decode(encoding=encoding)
+
+
+def gunzip_str(text: str, encoding: str = 'utf-8') -> str:
+    """gzipされた文字列を展開する関数
+
+    Args:
+        text (str): gzipされた文字列
+        encoding (str): フォーマット形式
+
+    Returns:
+        str: 展開後の文字列
+    """
+    binary_data = gzip.decompress(base64.b64decode(text))
     return binary_data.decode(encoding=encoding)

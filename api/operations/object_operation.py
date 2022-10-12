@@ -25,14 +25,21 @@ class IfcOpenShellObj(object):
 
             property_list = list()
             for d in obj.IsDefinedBy:
-                property_set = d.RelatingPropertyDefinition
-                if hasattr(property_set, "HasProperties"):
-                    for p in property_set.HasProperties:
-                        property_dict = {
-                            'name': p.Name,
-                            'value': p.NominalValue.wrappedValue
-                        }
-                        property_list.append(property_dict)
+                try:
+                    property_set = d.RelatingPropertyDefinition
+                    if hasattr(property_set, "HasProperties"):
+                        for p in property_set.HasProperties:
+                            property_dict = {
+                                'name': p.Name,
+                                'value': p.NominalValue.wrappedValue
+                            }
+                            property_list.append(property_dict)
+                except AttributeError:
+                    """
+                    FIXME:
+                    AttributeError: entity instance of type 'IFC2X3.IfcRelDefinesByType' has no attribute 'RelatingPropertyDefinition'
+                    """
+                    pass
 
             info_dict['propertySetNumber'] = len(property_list)
             info_dict['propertySet'] = property_list
