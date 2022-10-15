@@ -1,5 +1,5 @@
 PROJECT_ID=jpn-ifc-bc-api
-SERVICE_NAME=japan-ifc-building-conrifmation-api
+SERVICE_NAME=japan-ifc-building-confirmation-api
 REGION=asia-northeast1
 SA_NAME=jpn-ifc-bc-api-identity
 
