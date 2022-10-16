@@ -1,5 +1,5 @@
 PROJECT_ID=jpn-ifc-bc-api
-SERVICE_NAME=japan-ifc-building-conrifmation-api
+SERVICE_NAME=japan-ifc-building-confirmation-api
 REGION=asia-northeast1
 SA_NAME=jpn-ifc-bc-api-identity
 
@@ -54,10 +54,3 @@ deploy/all:
 	$(MAKE) build/prod TAG=$(TAG) -f deploy.mk
 	$(MAKE) gcr/deploy TAG=$(TAG) -f deploy.mk
 	$(MAKE) cloud-run/deploy TAG=$(TAG) -f deploy.mk
-
-.PHONY: test/prod
-test/prod: API_HOST_URL=https://japan-ifc-building-confirmation-api-vjxfkgpbxa-an.a.run.app
-test/prod:
-	 curl --request GET -sL \
-  	 --header "Authorization: Bearer $$(gcloud auth print-identity-token)" \
-  	 --url ${API_HOST_URL}/health

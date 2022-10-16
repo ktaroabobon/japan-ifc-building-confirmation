@@ -41,24 +41,23 @@ rerun:
 	$(MAKE) docker-compose/up-d
 	$(MAKE) run
 
-.PHONY: healthcheck
-healthcheck:
+.PHONY: healthcheck/dev
+healthcheck/dev:
 	curl --request GET -sL \
 	     --url 'http://0.0.0.0:8888/health/' \
 	     --header 'Content-Type: application/json'
 
-.PHONY: prod/healthcheck
-prod/healthcheck:
-	curl --request GET -sL \
-	     --url 'http://0.0.0.0:8080/health/' \
-	     --header 'Content-Type: application/json'
 
-.PHONY: prod/healthcheck/params
-prod/healthcheck/params:
+.PHONY: healthcheck/params/dev
+healthcheck/params/dev:
 	curl --request GET -sL \
 	     --url 'http://0.0.0.0:8080/health/params' \
 	     --header 'Content-Type: application/json' \
-	     --data-raw '{"ifc": "value1", "zipped": true}'
+	     --data-raw '{"ifc": "value", "zipped": true}'
+
+.PHONY: healthcheck
+healthcheck:
+	$(MAKE) healthcheck/dev
 
 .PHONY: docs
 docs:

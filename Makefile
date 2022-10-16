@@ -13,6 +13,10 @@ help:
 	cat ./Makefile
 	@echo "---------------"
 
+.PHONY: setup
+setup:
+	cp .env.sample .env
+
 .PHONY: build
 build:
 	$(MAKE) docker-compose/up-d
