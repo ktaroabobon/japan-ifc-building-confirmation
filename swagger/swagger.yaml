@@ -1,0 +1,240 @@
+swagger: "2.0"
+info:
+  title: Japan IFC Building Confirmation API
+  description: API for Japan IFC Building Confirmation. IFCを用いた日本における建築確認を行うためのAPIです。
+  version: 1.0.0
+  contact:
+    name: Keitaro Watanabe
+    email: ktaroabobon@gmail.com
+host: "localhost:8888"
+basePath: /v2
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /law-21-1:
+    post:
+      description: 建築基準法第21条第1号による建築確認を行う
+      tags:
+        - Law21-1
+      summary: law-21-1
+      operationId: law-21-1
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: false
+          description: ""
+          schema:
+            $ref: "./schema/index.yaml#/definitions/Law21-1Request"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/Law21-1Response"
+          headers: { }
+definitions:
+  Law21-1Request:
+    title: Law21-1Request
+    type: object
+    properties:
+      building:
+        $ref: "#/definitions/Building"
+      walls:
+        type: array
+        items:
+          $ref: "#/definitions/Wall"
+      columns:
+        type: array
+        items:
+          $ref: "#/definitions/Column"
+      beams:
+        type: array
+        items:
+          $ref: "#/definitions/Beam"
+      slabs:
+        type: array
+        items:
+          $ref: "#/definitions/Slab"
+      roofs:
+        type: array
+        items:
+          $ref: "#/definitions/Roof"
+      stairs:
+        type: array
+        items:
+          $ref: "#/definitions/Staircase"
+      metadata:
+        type: object
+  Law21-1Response:
+    title: Law21-1Response
+    type: object
+    properties:
+      result:
+        type: object
+        $ref: "#/definitions/ConfirmationResult"
+      message:
+        type: string
+      metadata:
+        type: object
+  ConfirmationResult:
+    title: ConfirmationResult
+    type: object
+    properties:
+      conformityElements:
+        type: array
+        items:
+          $ref: "#/definitions/ResponseElement"
+      nonConformityElements:
+        type: array
+        items:
+          $ref: "#/definitions/ResponseElement"
+      exceptionElements:
+        type: array
+        items:
+          $ref: "#/definitions/ResponseElement"
+  ResponseElement:
+    title: ResponseElement
+    type: object
+    properties:
+      globalId:
+        type: string
+      type:
+        type: string
+      name:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  PropertySet:
+    title: PropertySet
+    type: object
+    properties:
+      name:
+        type: string
+      value:
+        anyOf:
+          - type: string
+          - type: number
+          - type: boolean
+  Building:
+    title: Building
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  Wall:
+    title: Wall
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  Column:
+    title: Column
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  Beam:
+    title: Beam
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  Slab:
+    title: Slab
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  Roof:
+    title: Roof
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  Staircase:
+    title: Staircase
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"

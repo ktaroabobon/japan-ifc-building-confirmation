@@ -2,7 +2,7 @@
 建築基準法第21条第1号（大規模建築の主要構造部）
 https://elaws.e-gov.go.jp/document?lawid=325AC0000000201#Mp-At_21-Pr_1
 """
-from jpnifcbc.law.base_confirmation import BaseConfirmation
+from jpnifcbc.law.base_confirmation import BaseConfirmation, BaseConfirmationV2
 from jpnifcbc.law.sub_methods.law109_4 import Confirmation as Law109_4
 from jpnifcbc.law.sub_methods.law109_5 import Confirmation as Law109_5
 
@@ -141,7 +141,8 @@ class Confirmation(BaseConfirmation):
                         for property in property_set.HasProperties:
                             if property.is_a('IfcPropertySingleValue'):
                                 if property_set.Name == "Pset_BuildingUse" and property.Name == "MarketCategory":
-                                    if property.NominalValue.wrappedValue not in ["倉庫", "自動車車庫", "自動車修理工場"]:
+                                    if property.NominalValue.wrappedValue not in ["倉庫", "自動車車庫",
+                                                                                  "自動車修理工場"]:
                                         flag = False
                                         break
                                 if property.Name == "Height":
@@ -179,6 +180,103 @@ class Confirmation(BaseConfirmation):
         conformity_elements_by109_5, not_conformity_elements_by109_5 = Law109_5.main(
             self.ifc_file,
             conformity_elements_by109_4
+        )
+
+        self.conformity_elements = conformity_elements_by109_5
+        self.not_conformity_elements = not_conformity_elements_by109_4 + not_conformity_elements_by109_5
+
+
+class ConfirmationV2(BaseConfirmationV2):
+    """
+    基準法第21条第1号（大規模建築の主要構造部）の判定
+    独自API規格を実装するためのクラス
+    """
+
+    @classmethod
+    def main(cls):
+        """
+        適合判定実行関数
+
+        Returns:
+            bool: 判定結果
+        """
+        target = cls()
+        if not target.exception() and target.condition():
+            target.verification()
+
+        return [target.conformity_elements, target.not_conformity_elements, target.exception_elements]
+
+    def exception(self):
+        """
+        例外部分の判定
+
+        Returns:
+            bool: 判定結果
+        """
+        return False
+
+    def condition(self) -> bool:
+        """
+        条件部分の判定
+
+        Returns:
+            bool: 判定結果
+        """
+
+        def __one() -> bool:
+            """
+            地階を除く階数が4以上であるかの判定
+
+            Returns:
+                bool: 判定結果
+
+            """
+
+            cnt = 0
+
+            for storey in self.target_building.storeys:
+                if storey.above_ground:
+                    cnt += 1
+
+            return cnt >= 4
+
+        def __two() -> bool:
+            """
+            高さが16メートルを超える建築物であるかの判定
+
+            Returns:
+                bool: 判定結果
+
+            """
+
+            return self.target_building.height > 16000
+
+        def __three() -> bool:
+            """
+            別表第一(い)欄(五)項又は(六)項に掲げる用途に供する特殊建築物で、高さが十三メートルを超えるものの判定
+
+            Returns:
+                bool: 判定結果
+            """
+            target_building_use = ['倉庫', '自動車車庫', '自動車修理工場']
+
+            return self.target_building.use in target_building_use and self.target_building.height > 13000
+
+        flag = False
+        if __one() or __two() or __three():
+            flag = True
+        return flag
+
+    def verification(self):
+        """
+        基準部分の判定
+
+        Returns:
+        """
+        conformity_elements_by109_4, not_conformity_elements_by109_4 = Law109_4.main(self.ifc_file)
+        conformity_elements_by109_5, not_conformity_elements_by109_5 = Law109_5.main(
+            self.ifc_file,
+            conformity_elements_by109_4,
         )
 
         self.conformity_elements = conformity_elements_by109_5

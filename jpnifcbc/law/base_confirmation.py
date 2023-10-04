@@ -13,3 +13,11 @@ class BaseConfirmation(object):
             conformity_elements += self.ifc_file.by_type(t)
 
         return [conformity_elements, not_conformity_elements]
+
+
+class BaseConfirmationV2(object):
+    def __init__(self):
+        self.target_building: Building = None
+        self.exception_elements = None
+        self.conformity_elements = None
+        self.not_conformity_elements = None

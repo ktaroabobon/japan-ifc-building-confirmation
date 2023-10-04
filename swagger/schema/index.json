@@ -1,0 +1,13 @@
+{
+  "definitions":{
+    "Law21-1Request": {
+      "title": "Law21-1Request",
+        "type": "object",
+      "properties": {
+        "building": {
+          $ref: "#/definitions/Building"
+        }
+      }
+    }
+  }
+}
