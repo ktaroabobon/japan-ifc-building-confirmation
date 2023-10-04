@@ -5,6 +5,8 @@ https://elaws.e-gov.go.jp/document?lawid=325AC0000000201#Mp-At_21-Pr_1
 from jpnifcbc.law.base_confirmation import BaseConfirmation, BaseConfirmationV2
 from jpnifcbc.law.sub_methods.law109_4 import Confirmation as Law109_4
 from jpnifcbc.law.sub_methods.law109_5 import Confirmation as Law109_5
+from jpnifcbc.law.sub_methods.law109_4 import ConfirmationV2 as Law109_4_v2
+from jpnifcbc.law.sub_methods.law109_5 import ConfirmationV2 as Law109_5_v2
 
 from jpnifcbc.wrapper.element import Quantity
 
@@ -235,7 +237,7 @@ class ConfirmationV2(BaseConfirmationV2):
             cnt = 0
 
             for storey in self.target_building.storeys:
-                if storey.above_ground:
+                if storey.pset('above_ground'):
                     cnt += 1
 
             return cnt >= 4
@@ -273,11 +275,8 @@ class ConfirmationV2(BaseConfirmationV2):
 
         Returns:
         """
-        conformity_elements_by109_4, not_conformity_elements_by109_4 = Law109_4.main(self.ifc_file)
-        conformity_elements_by109_5, not_conformity_elements_by109_5 = Law109_5.main(
-            self.ifc_file,
-            conformity_elements_by109_4,
-        )
+        conformity_elements_by109_4, not_conformity_elements_by109_4 = Law109_4_v2.main()
+        conformity_elements_by109_5, not_conformity_elements_by109_5 = Law109_5_v2.main()
 
         self.conformity_elements = conformity_elements_by109_5
         self.not_conformity_elements = not_conformity_elements_by109_4 + not_conformity_elements_by109_5

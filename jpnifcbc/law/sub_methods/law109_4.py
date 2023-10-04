@@ -2,8 +2,9 @@
 建築基準法施行令第109条第4項
 https://elaws.e-gov.go.jp/document?lawid=325CO0000000338#Mp-At_109_4-Pr_1
 """
-from jpnifcbc.law.base_confirmation import BaseConfirmation
+from jpnifcbc.law.base_confirmation import BaseConfirmation, BaseConfirmationV2
 from jpnifcbc.law.standard_methods.law2_5 import Confirmation as Law2_5
+from jpnifcbc.law.standard_methods.law2_5 import ConfirmationV2 as Law2_5_v2
 
 
 class Confirmation(BaseConfirmation):
@@ -69,6 +70,60 @@ class Confirmation(BaseConfirmation):
                     AttributeError: entity instance of type 'IFC2X3.IfcRelDefinesByType' has no attribute 'RelatingPropertyDefinition'
                     """
                     pass
+
+        self.conformity_elements = conformity_elements
+        self.not_conformity_elements = not_conformity_elements
+
+
+class ConfirmationV2(BaseConfirmationV2):
+    """
+    施行令第109条第4項
+
+    基準法第21条第1項の政令で定められている部分の技術的基準について
+    """
+
+    @classmethod
+    def main(cls):
+        """
+        実行関数
+
+        Returns:
+
+        """
+        target = cls()
+        target.condition()
+        target.verification()
+
+        return [target.conformity_elements, target.not_conformity_elements]
+
+    def condition(self):
+        """
+        条件部分の判定
+
+        Returns:
+
+        """
+        law2_5_conformity_elements, _ = Law2_5_v2.main()
+        self.target_elements(law2_5_conformity_elements)
+
+    def verification(self):
+        """
+        基準部分の判定
+
+        Returns:
+
+        """
+        if self.target_elements is None:
+            return
+
+        conformity_elements = list()
+        not_conformity_elements = list()
+
+        for element in self.target_elements:
+            if element.pset("load_bearing"):
+                conformity_elements.append(element)
+            else:
+                not_conformity_elements.append(element)
 
         self.conformity_elements = conformity_elements
         self.not_conformity_elements = not_conformity_elements

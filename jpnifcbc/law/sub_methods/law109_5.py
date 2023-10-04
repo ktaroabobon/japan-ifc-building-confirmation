@@ -3,7 +3,8 @@
 https://elaws.e-gov.go.jp/document?lawid=325CO0000000338#Mp-At_109_5-Pr_1
 """
 
-from jpnifcbc.law.base_confirmation import BaseConfirmation
+from jpnifcbc.law.base_confirmation import BaseConfirmation, BaseConfirmationV2
+from jpnifcbc.models.building import Wall, Column, Slab, Beam, Roof, Stair
 
 
 class Confirmation(BaseConfirmation):
@@ -89,6 +90,66 @@ class Confirmation(BaseConfirmation):
                         AttributeError: entity instance of type 'IFC2X3.IfcRelDefinesByType' has no attribute 'RelatingPropertyDefinition'
                         """
                         pass
+
+        self.conformity_elements = conformity_elements
+        self.not_conformity_elements = not_conformity_elements
+
+
+class ConfirmationV2(BaseConfirmationV2):
+    """
+    施行令第109条第5項
+
+    大規模建築物の主要構造部に関する技術的基準について
+    """
+
+    @classmethod
+    def main(cls):
+        """
+        実行関数
+
+        Returns:
+
+        """
+        target = cls()
+        target.condition()
+        target.verification()
+
+        return [target.conformity_elements, target.not_conformity_elements]
+
+    def condition(self):
+        """
+        条件部分の判定
+
+        Returns:
+
+        """
+        pass
+
+    def verification(self):
+        """
+        基準部分の判定
+
+        Returns:
+
+        """
+
+        patter1_instances = [Wall, Column, Slab, Beam]
+
+        conformity_elements = list()
+        not_conformity_elements = list()
+
+        for element in self.target_elements:
+            fire_rating_value = element.pset("fire_rating")
+            if isinstance(element, tuple(patter1_instances)):
+                if fire_rating_value >= 45:
+                    conformity_elements.append(element)
+                else:
+                    not_conformity_elements.append(element)
+            else:
+                if fire_rating_value >= 30:
+                    conformity_elements.append(element)
+                else:
+                    not_conformity_elements.append(element)
 
         self.conformity_elements = conformity_elements
         self.not_conformity_elements = not_conformity_elements
