@@ -83,14 +83,13 @@ class ConfirmationV2(BaseConfirmationV2):
     """
 
     @classmethod
-    def main(cls):
+    def main(cls, building=None):
         """
         実行関数
-
-        Returns:
-
         """
         target = cls()
+        if building is not None:
+            target.ifc_file = building.ifc_file
         target.condition()
         target.verification()
 

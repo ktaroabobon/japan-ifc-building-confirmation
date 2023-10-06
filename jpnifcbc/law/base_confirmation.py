@@ -21,8 +21,8 @@ class BaseConfirmation(object):
 
 
 class BaseConfirmationV2(object):
-    def __init__(self):
-        self.target_building: Optional[Building] = None
+    def __init__(self, building: Building = None):
+        self.target_building: Building = building
         self._target_elements = None
         self.exception_elements = None
         self.conformity_elements = None
@@ -51,9 +51,10 @@ class BaseConfirmationV2(object):
         if self.target_elements is not None:
             return self._target_elements
         else:
+            if self.target_building is None:
+                raise Exception("target_building is None")
             return self.target_building.building_elements
 
     @target_elements.setter
     def target_elements(self, elements):
         self._target_elements = elements
-

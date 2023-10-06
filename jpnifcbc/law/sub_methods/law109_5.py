@@ -103,7 +103,7 @@ class ConfirmationV2(BaseConfirmationV2):
     """
 
     @classmethod
-    def main(cls):
+    def main(cls, building=None):
         """
         実行関数
 
@@ -111,6 +111,8 @@ class ConfirmationV2(BaseConfirmationV2):
 
         """
         target = cls()
+        if building is not None:
+            target.target_building = building
         target.condition()
         target.verification()
 

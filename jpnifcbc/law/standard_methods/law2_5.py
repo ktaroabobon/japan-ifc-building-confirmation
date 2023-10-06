@@ -80,7 +80,7 @@ class ConfirmationV2(BaseConfirmationV2):
     """
 
     @classmethod
-    def main(cls) -> list:
+    def main(cls, building=None) -> list:
         """
         適合判定実行関数
 
@@ -88,6 +88,8 @@ class ConfirmationV2(BaseConfirmationV2):
             bool: 判定結果
         """
         target = cls()
+        if building is not None:
+            target.target_building = building
         target.condition()
         target.verification()
 
