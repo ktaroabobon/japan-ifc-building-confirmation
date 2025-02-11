@@ -34,6 +34,10 @@ docker-compose/up:
 docker-compose/up-d:
 	$(DOCKER_COMPOSE_IMPL) up -d
 
+.PHONY: docker-compose/rebuild
+docker-compose/rebuild:
+	$(DOCKER_COMPOSE_IMPL) up --build
+
 .PHONY: docker-compose/down
 docker-compose/down:
 	$(DOCKER_COMPOSE_IMPL) down

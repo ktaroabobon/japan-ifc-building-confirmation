@@ -7,6 +7,7 @@ from api.schemas.v2.api_request import APIRequest
 from api.schemas.v2.api_response import APIResponse, AnalysisResult
 
 from jpnifcbc.law.standard_methods.law21_1 import ConfirmationV2 as Law21_1_v2
+from jpnifcbc.models.building import Building, Storey, Wall, Column, Slab, Roof, Beam, Stair
 
 v2_base_url = 'v2'
 
@@ -19,10 +20,21 @@ def law_21_1(body: APIRequest):
     metadata = None
     try:
         request = body.dict()
-        building = request["building"]
+        building = Building.from_dict(request["building"])
+        storeys = [Storey.from_dict(s) for s in building["storeys"]]
+        walls = [Wall.from_dict(w) for w in building["walls"]]
+        columns = [Column.from_dict(c) for c in building["columns"]]
+        slabs = [Slab.from_dict(s) for s in building["slabs"]]
+        beams = [Beam.from_dict(b) for b in building["beams"]]
+        roofs = [Roof.from_dict(r) for r in building["roofs"]]
+        stairs = [Stair.from_dict(s) for s in building["stairs"]]
+        building.building_elements = walls + columns + slabs + beams + roofs + stairs
+        building.storeys = storeys
         metadata = request["metadata"]
 
-        conformity_elements, not_conformity_elements, exception_elements = Law21_1_v2.main(building)
+        conformity_elements, not_conformity_elements, exception_elements = Law21_1_v2.main(
+            building=building
+        )
 
         result = AnalysisResult(
             conformityElements=[e.export_as_dict() for e in conformity_elements],

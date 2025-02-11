@@ -1,0 +1,240 @@
+definitions:
+  Law21-1Request:
+    title: Law21-1Request
+    type: object
+    properties:
+      building:
+        $ref: "#/definitions/Building"
+      storeys:
+        type: array
+        items:
+          $ref: "#/definitions/Storey"
+      walls:
+        type: array
+        items:
+          $ref: "#/definitions/Wall"
+      columns:
+        type: array
+        items:
+          $ref: "#/definitions/Column"
+      beams:
+        type: array
+        items:
+          $ref: "#/definitions/Beam"
+      slabs:
+        type: array
+        items:
+          $ref: "#/definitions/Slab"
+      roofs:
+        type: array
+        items:
+          $ref: "#/definitions/Roof"
+      stairs:
+        type: array
+        items:
+          $ref: "#/definitions/Staircase"
+      metadata:
+        type: object
+  Law21-1Response:
+    title: Law21-1Response
+    type: object
+    properties:
+      result:
+        type: object
+        $ref: "#/definitions/ConfirmationResult"
+      message:
+        type: string
+      metadata:
+        type: object
+  ConfirmationResult:
+    title: ConfirmationResult
+    type: object
+    properties:
+      conformityElements:
+        type: array
+        items:
+          $ref: "#/definitions/ResponseElement"
+      nonConformityElements:
+        type: array
+        items:
+          $ref: "#/definitions/ResponseElement"
+      exceptionElements:
+        type: array
+        items:
+          $ref: "#/definitions/ResponseElement"
+  ResponseElement:
+    title: ResponseElement
+    type: object
+    properties:
+      globalId:
+        type: string
+      type:
+        type: string
+      name:
+        type: string
+      propertySetCount:
+        type: integer
+      propertySets:
+        type: array
+        items:
+          $ref: "#/definitions/PropertySet"
+  PropertySet:
+    title: PropertySet
+    type: object
+    properties:
+      name:
+        type: string
+      value:
+        anyOf:
+          - type: string
+          - type: number
+          - type: boolean
+  Building:
+    title: Building
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          Height:
+            type: number
+            example: 10.0
+  Storey:
+    title: Storey
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          AboveGround:
+            type: boolean
+            example: true
+          Height:
+            type: number
+            example: 3.0
+  Wall:
+    title: Wall
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          LoadBearing:
+            type: boolean
+            example: true
+          FireRating:
+            type: number
+            example: 60
+  Column:
+    title: Column
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          LoadBearing:
+            type: boolean
+            example: true
+          FireRating:
+            type: number
+            example: 60
+  Beam:
+    title: Beam
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          LoadBearing:
+            type: boolean
+            example: true
+          FireRating:
+            type: number
+            example: 60
+  Slab:
+    title: Slab
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          LoadBearing:
+            type: boolean
+            example: true
+          FireRating:
+            type: number
+            example: 60
+  Roof:
+    title: Roof
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          LoadBearing:
+            type: boolean
+            example: true
+          FireRating:
+            type: number
+            example: 60
+  Staircase:
+    title: Staircase
+    type: object
+    properties:
+      globalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      propertySets:
+        type: object
+        properties:
+          LoadBearing:
+            type: boolean
+            example: true
+          FireRating:
+            type: number
+            example: 60
